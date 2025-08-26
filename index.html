@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>California Residential Electrical Design and Permit Workflow</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 320px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            overflow-y: auto;
+            position: fixed;
+            height: 100vh;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar.collapsed {
+            transform: translateX(-100%);
+        }
+
+        .sidebar-header {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .sidebar-header h1 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .sidebar-header p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .search-container {
+            margin-bottom: 25px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 14px;
+            backdrop-filter: blur(10px);
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .search-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .nav-section {
+            margin-bottom: 25px;
+        }
+
+        .nav-section h3 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            opacity: 0.8;
+            font-weight: 500;
+        }
+
+        .nav-item {
+            display: block;
+            padding: 12px 16px;
+            margin-bottom: 4px;
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transform: translateX(4px);
+        }
+
+        .nav-item.active {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-weight: 500;
+        }
+
+        .main-content {
+            flex: 1;
+            margin-left: 320px;
+            transition: margin-left 0.3s ease;
+        }
+
+        .main-content.expanded {
+            margin-left: 0;
+        }
+
+        .content-header {
+            background: white;
+            padding: 20px 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #667eea;
+        }
+
+        .content-section {
+            padding: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content-section h1 {
+            color: #2d3748;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .content-section h2 {
+            color: #4a5568;
+            font-size: 1.6rem;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 8px;
+        }
+
+        .content-section h3 {
+            color: #2d3748;
+            font-size: 1.3rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .mermaid-container {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 25px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow-x: auto;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .rules-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .rules-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .rules-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .rules-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .rules-table tr:hover {
+            background-color: #f7fafc;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .section-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fef5e7 0%, #fed7aa 100%);
+            border-left: 4px solid #f59e0b;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .badge {
+            background: #667eea;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.show {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .content-section {
+                padding: 20px;
+            }
+
+            .content-section h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Mermaid diagram styling */
+        .mermaid {
+            text-align: center;
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h1>CA Electrical Workflow</h1>
+                <p>Design & Permit Guide</p>
+            </div>
+
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search sections..." id="searchInput">
+            </div>
+
+            <div class="nav-section">
+                <h3>Main Sections</h3>
+                <a href="#" class="nav-item active" data-section="overview">Overview</a>
+                <a href="#" class="nav-item" data-section="master-workflow">Master Workflow</a>
+                <a href="#" class="nav-item" data-section="service-panel">Service & Panel Location</a>
+                <a href="#" class="nav-item" data-section="panel-quantity">Panel Quantity Decision</a>
+                <a href="#" class="nav-item" data-section="pv-integration">PV Integration</a>
+                <a href="#" class="nav-item" data-section="ev-infrastructure">EV Infrastructure</a>
+                <a href="#" class="nav-item" data-section="branch-circuits">Branch Circuits</a>
+                <a href="#" class="nav-item" data-section="ess-integration">ESS Integration</a>
+            </div>
+
+            <div class="nav-section">
+                <h3>Tools & References</h3>
+                <a href="#" class="nav-item" data-section="subpanel-worksheet">Subpanel Worksheet</a>
+                <a href="#" class="nav-item" data-section="detached-structure">Detached Structure</a>
+                <a href="#" class="nav-item" data-section="labels">Labels & Placards</a>
+                <a href="#" class="nav-item" data-section="permit-set">Permit Set Requirements</a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content" id="mainContent">
+            <div class="content-header">
+                <button class="menu-toggle" id="menuToggle">☰</button>
+                <h2 id="sectionTitle">California Residential Electrical Design and Permit Workflow</h2>
+            </div>
+
+            <div class="content-section" id="contentArea">
+                <!-- Content will be dynamically loaded here -->
+            </div>
+        </main>
+    </div>
+
+    <button class="back-to-top" id="backToTop">↑</button>
+
+    <script>
+        // Initialize Mermaid
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true
+            }
+        });
+
+        // Content data
+        const sections = {
+            overview: {
+                title: "Overview",
+                content: `
+                    <h1>California Residential Electrical Design and Permit Workflow</h1>
+                    <div class="section-card">
+                        <h3>Welcome to the Interactive Workflow Guide</h3>
+                        <p>This comprehensive guide covers the complete electrical design and permit process for residential projects in California. Navigate through the sections using the sidebar to explore:</p>
+                        <ul>
+                            <li><strong>Master Workflow:</strong> Complete end-to-end process overview</li>
+                            <li><strong>Service & Panel:</strong> Location requirements and dimensions</li>
+                            <li><strong>Panel Decisions:</strong> When to add subpanels and feeders</li>
+                            <li><strong>PV Integration:</strong> Solar photovoltaic system connections</li>
+                            <li><strong>EV Infrastructure:</strong> Electric vehicle readiness requirements</li>
+                            <li><strong>Branch Circuits:</strong> Room-by-room circuit design</li>
+                            <li><strong>ESS Integration:</strong> Energy storage system requirements</li>
+                            <li><strong>Tools & References:</strong> Worksheets, checklists, and permit requirements</li>
+                        </ul>
+                    </div>
+                    <div class="highlight-box">
+                        <h4>Key Features</h4>
+                        <ul>
+                            <li>Interactive workflow diagrams</li>
+                            <li>Quick reference tables</li>
+                            <li>Code citations and requirements</li>
+                            <li>Practical worksheets and checklists</li>
+                            <li>Search functionality for quick navigation</li>
+                        </ul>
+                    </div>
+                `
+            },
+            "master-workflow": {
+                title: "Master End-to-End Workflow",
+                content: `
+                    <h1>Master End-to-End Workflow</h1>
+                    <div class="section-card">
+                        <p>This diagram shows the complete electrical design process from initial planning through final inspection. Each step builds upon the previous ones and includes specific code requirements.</p>
+                    </div>
+                    <div class="mermaid-container">
+                        <div class="mermaid">
+                            flowchart TD
+                                Z0[Pre design]
+                                Z1[Load calculation including EV PV ESS per Article 220]
+                                Z2[Service and panel location and dimensions per 110 26 and 240 24 and 230 85]
+                                Z3{Need additional panels or feeders}
+                                Z4[Design subpanels and feeders per 215 and 310 16 and 250 32]
+                                Z5[Photovoltaic tie in per 705 11 or 705 12 plus rapid shutdown per 690 12]
+                                Z6[Electric vehicle readiness and EVSE per CALGreen 4 106 4 1 and CEC Article 625]
+                                Z7[Energy storage location disconnect and listings per CRC R328 and CFC 1206 and CEC 705 and 706]
+                                Z8[Labels and directories per 230 85 E and 705 10 and 690 56 and 408 4]
+                                Z9[One line site and elevations and panel schedules]
+                                ZA[Permit submittal and corrections]
+                                ZB[Inspections rough to final including labels and protection]
+                                
+                                Z0 --> Z1 --> Z2 --> Z3
+                                Z3 -- Yes --> Z4 --> Z5
+                                Z3 -- No --> Z5
+                                Z5 --> Z6 --> Z7 --> Z8 --> Z9 --> ZA --> ZB
+                        </div>
+                    </div>
+                    <div class="highlight-box">
+                        <h4>Critical Decision Point</h4>
+                        <p>Step Z3 determines whether additional panels or feeders are needed based on:</p>
+                        <ul>
+                            <li>Load calculation results</li>
+                            <li>Circuit count requirements</li>
+                            <li>Distance and voltage drop considerations</li>
+                            <li>System segregation needs (PV, ESS, backup loads)</li>
+                        </ul>
+                    </div>
+                `
+            },
+            "service-panel": {
+                title: "Service and Panel Location",
+                content: `
+                    <h1>Service and Panel Location and Dimensions</h1>
+                    
+                    <h2>Design Workflow</h2>
+                    <div class="mermaid-container">
+                        <div class="mermaid">
+                            flowchart TD
+                                A[Confirm service size from Article 220 demand]
+                                B[Select service equipment location per 230 70 and 230 85]
+                                C[Check panel location limits per 240 24]
+                                D[Verify working clearance per 110 26 A]
+                                E[Verify dedicated equipment space per 110 26 E]
+                                F[Verify handle height and accessibility per 240 24 A]
+                                G[Verify door swing and illumination per 110 26]
+                                H[Install SPD at service per 230 67]
+                                I[Provide outdoor emergency disconnect and exact marking per 230 85 E]
+                                J[Provide intersystem bonding termination per 250 94]
+                                K[Provide panel directory and multiple sources directory per 408 4 and 705 10]
+                                
+                                A --> B --> C --> D --> E --> F --> G --> H --> I --> J --> K
+                        </div>
+                    </div>
+
+                    <h2>Quick Reference Rules</h2>
+                    <table class="rules-table">
+                        <thead>
+                            <tr>
+                                <th>Topic</th>
+                                <th>Requirement</th>
+                                <th>Code Section</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Working space</strong></td>
+                                <td>Depth 36 in, width 30 in or width of equipment, height 6 ft 6 in</td>
+                                <td><span class="badge">110.26 A</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Door and egress</strong></td>
+                                <td>Door in working space opens 90 degrees</td>
+                                <td><span class="badge">110.26 A 2</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Illumination</strong></td>
+                                <td>Lighting required for the working space</td>
+                                <td><span class="badge">110.26 D</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Dedicated equipment space indoor</strong></td>
+                                <td>Keep foreign systems out above panel to 6 ft above or structural ceiling</td>
+                                <td><span class="badge">110.26 E 1</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Dedicated equipment space outdoor</strong></td>
+                                <td>Keep foreign systems above clear and protect from precipitation</td>
+                                <td><span class="badge">110.26 E 3</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Prohibited locations</strong></td>
+                                <td>No panelboards in bathrooms or clothes closets and not over steps</td>
+                                <td><span class="badge">240.24 D E F</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Handle height and access</strong></td>
+                                <td>Operating handle at or below 6 ft 7 in and readily accessible</td>
+                                <td><span class="badge">240.24 A</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Outdoor emergency disconnect dwelling</strong></td>
+                                <td>Required and labeled per exact wording</td>
+                                <td><span class="badge">230.85 and 230.85 E</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>SPD at dwelling service</strong></td>
+                                <td>Type 1 or Type 2 at service equipment</td>
+                                <td><span class="badge">230.67</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Intersystem bonding termination</strong></td>
+                                <td>Provide at service</td>
+                                <td><span class="badge">250.94</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Panel directory</strong></td>
+                                <td>Clear and specific circuit identification</td>
+                                <td><span class="badge">408.4 A</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Multiple sources directory</strong></td>
+                                <td>Plaque at service identifying all source disconnect locations</td>
+                                <td><span class="badge">705.10</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                `
+            },
+            "panel-quantity": {
+                title: "Panel Quantity and Subpanel Decision",
+                content: `
+                    <h1>Panel Quantity and Subpanel Decision</h1>
+                    
+                    <h2>Decision Workflow</h2>
+                    <div class="mermaid-container">
+                        <div class="mermaid">
+                            flowchart TD
+                                A[Start with demand calculation from Article 220]
+                                B{Demand exceeds service rating or bus limit}
+                                C{Circuit count exceeds spaces}
+                                D{Multi story or long homeruns or voltage drop concerns}
+                                E{PV or ESS or generator requires segregation or backup loads}
+                                F[Add subpanel design]
+                                G[Proceed with single panel]
+                                
+                                A --> B
+                                B -- Yes --> F
+                                B -- No --> C
+                                C -- Yes --> F
+                                C -- No --> D
+                                D -- Yes --> F
+                                D -- No --> E
+                                E -- Yes --> F
+                                E -- No --> G
+                        </div>
+                    </div>
+
+                    <h2>Subpanel Design Rules</h2>
+                    <div class="section-card">
+                        <ul>
+                            <li><strong>Feeder sizing</strong> per Article 215 and ampacity per Table 310.16</li>
+                            <li><strong>OCPD for feeder</strong> per 215.3 and 240.21</li>
+                            <li><strong>Neutral isolated in subpanels</strong> and <strong>bond only at service</strong> per 250.24 A 5</li>
+                            <li><strong>Equipment grounding conductor</strong> with feeder per 250.32 B 1</li>
+                            <li><strong>Detached structure</strong> requires building disconnect per 225.31 and 225.32 and a grounding electrode system per 250.32 A</li>
+                            <li>Apply <strong>working space and dedicated space</strong> at every panel per 110.26 and 110.26 E</li>
+                            <li>If PV backfeeds a subpanel apply <strong>705.12</strong> in that panel</li>
+                            <li>Provide <strong>panel directory</strong> at each panel per 408.4 A and keep <strong>705.10 directory</strong> at service updated</li>
+                        </ul>
+                    </div>
+                `
+            },
+            "pv-integration": {
+                title: "PV Integration",
+                content: `
+                    <h1>PV Integration</h1>
+                    
+                    <h2>Design Workflow</h2>
+                    <div class="mermaid-container">
+                        <div class="mermaid">
+                            flowchart TD
+                                A[Define inverter AC output current and OCPD]
+                                B{Choose interconnection method}
+                                C[Load side interconnection per 705 12]
+                                D[Supply side interconnection per 705 11]
+                                E[Load side bus and feeder calculation including 120 percent rule]
+                                F[Supply side disconnect and OCPD location and tap method]
+                                G[Provide rapid shutdown and initiator per 690 12]
+                                H[Provide PV labels including AC output and RSD labels per 690 54 and 690 56 C]
+                                I[Update multiple sources directory per 705 10]
+                                
+                                A --> B
+                                B -- Load side --> C --> E --> G
+                                B -- Supply side --> D --> F --> G
+                                G --> H --> I
+                        </div>
+                    </div>
+
+                    <h2>Design Checkpoints</h2>
+                    <div class="highlight-box">
+                        <h4>Load Side Rule Example</h4>
+                        <p>For a 200 amp bus: main 200 plus PV OCPD must be at or below 240 amps which is one hundred twenty percent of bus. Place PV breaker at the opposite end or per dwelling center fed allowance in 705.12.</p>
+                    </div>
+
+                    <div class="section-card">
+                        <h3>Key Requirements</h3>
+                        <ul>
+                            <li><strong>Supply side taps</strong> follow 705.11 and 230.46 with disconnect and OCPD outside or first readily accessible point and short conductor length typical ten feet in dwellings</li>
+                            <li><strong>Rapid shutdown and labels</strong> per 690.12 and 690.56 C</li>
+                            <li><strong>Service directory</strong> per 705.10 lists all sources and disconnect locations</li>
+                        </ul>
+                    </div>
+                `
+            },
+            "ev-infrastructure": {
+                title: "EV Infrastructure",
+                content: `
+                    <h1>EV Infrastructure</h1>
+                    
+                    <h2>Design Workflow</h2>
+                    <div class="mermaid-container">
+                        <div class="mermaid">
+                            flowchart TD
+                                A[New one or two family dwelling]
+                                B[Provide EV capable per CALGreen 4 106 4 1]
+                                C[Reserve 40 amp 208 240 volt space and raceway to parking]
+                                D[Mark panel directory EV capable]
+                                E[Installing EVSE now]
+                                F[Size branch and OCPD at one hundred twenty five percent continuous load per 625 41 and 210 20]
+                                G[Provide GFCI where required per 210 8 and AFCI where routing requires per 210 12]
+                                H[Provide local disconnect if rating above 60 amp or above 150 volt to ground per 625 43]
+                                
+                                A --> B --> C --> D --> E
+                                E -- Yes --> F --> G --> H
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>Important Notes</h4>
+                        <p>EV receptacles in a garage and outdoors require GFCI per 210.8 A. Many projects choose a hardwired EVSE with integral personnel protection. Keep EV loads in the load calc as continuous.</p>
+                    </div>
+                `
+            },
+            "branch-circuits": {
+                title: "Room by Room Branch Circuits",
+                content: `
+                    <h1>Room by Room Branch Circuits</h1>
+                    
+                    <h2>Design Workflow</h2>
+                    <div class="mermaid-container">
+                        <div class="mermaid">
+                            flowchart TD
+                                A[Lay out receptacles per 210 52 spacing]
+                                B[Assign required 20 amp circuits per 210 11 C]
+                                C[Apply GFCI locations per 210 8 A]
+                                D[Apply AFCI coverage per 210 12 A]
+                                E[Update panel schedule and directory per 408 4 A]
+                                
+                                A --> B --> C --> D --> E
+                        </div>
+                    </div>
+
+                    <h2>Quick Reference Table</h2>
+                    <table class="rules-table">
+                        <thead>
+                            <tr>
+                                <th>Area</th>
+                                <th>Required Circuits</th>
+                                <th>GFCI</th>
+                                <th>AFCI</th>
+                                <th>Other Rules</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Kitchen</strong></td>
+                                <td>Two 20 amp small appliance circuits minimum</td>
+                                <td>Yes for countertop and within six feet of sink</td>
+                                <td>Yes</td>
+                                <td>Spacing per 210.52 C and island and peninsula rules</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Bathroom</strong></td>
+                                <td>One 20 amp receptacle circuit dedicated</td>
+                                <td>Yes</td>
+                                <td>As routed or per AHJ</td>
+                                <td>Receptacle within three feet of basin per 210.52 D</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Laundry</strong></td>
+                                <td>One 20 amp laundry circuit</td>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Garage</strong></td>
+                                <td>One 20 amp circuit for receptacles may also feed exterior receptacles</td>
+                                <td>Yes</td>
+                                <td>Often required by current adoptions verify with AHJ</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Habitable rooms</strong></td>
+                                <td>Circuits per load calc</td>
+                                <td>Not typically unless near sink</td>
+                                <td>Yes</td>
+                                <td>Spacing per 210.52 A</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Outdoors</strong></td>
+                                <td>At least one front and one rear receptacle</td>
+                                <td>Yes</td>
+                                <td>Not required</td>
+                                <td>210.52 E</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                `
+            },
+            "ess-integration": {
+                title: "ESS Energy Storage Integration",
+                content: `
+                    <h1>ESS Energy Storage Integration</h1>
+                    
+                    <h2>Design Workflow</h2>
+                    <div class="mermaid-container">
+                        <div class="mermaid">
+                            flowchart TD
+                                A[Select listed ESS system to UL 9540]
+                                B[Choose location per CRC R328 and CFC 1206]
+                                C[Verify clearances and aggregate energy limits]
+                                D[Provide ESS disconnect and OCPD at exterior or first accessible point]
+                                E[Integrate with PV or grid per 705 and 706]
+                                F[Provide signage and update directory per 705 10]
+                                G[Include manuals listings fire sheets in submittal]
+                                
+                                A --> B --> C --> D --> E --> F --> G
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>Important Notes</h4>
+                        <p>Typical residential limits include location in attached garage or outdoors with clearances and battery energy caps per room. Many AHJs require a heat detector in garages and clear placarding. Keep neutral and grounding rules correct if the system islands through a backup loads panel.</p>
+                    </div>
+                `
+            },
+            "subpanel-worksheet": {
+                title: "Subpanel Feeder Sizing Worksheet",
+                content: `
+                    <h1>Subpanel Feeder Sizing Mini Worksheet</h1>
+                    <div class="section-card">
+                        <p>Paste this into your E sheets and fill values.</p>
+                    </div>
+                    <div class="code-block">
+Subpanel name: _______________________________
+Location: ____________________________________
+
+Load summary for this subpanel:
+  General lighting and receptacles VA: __________
+  Fixed appliances VA: _________________________
+  HVAC VA: ____________________________________
+  EVSE VA if landed here: _____________________
+  PV backfeed if any: _________________________
+
+Feeder calculations:
+  Calculated demand amps at 240 V: ____________
+  Continuous load portion amps: _______________
+  Multiply continuous by 125 percent: _________
+  Non continuous amps: ________________________
+  Feeder minimum ampacity total: ______________
+
+Feeder conductors:
+  Conductor material and size: ________________
+  Insulation type: ____________________________
+  Temperature column used from Table 310 16: __
+  Adjustments and corrections applied: ________
+
+Overcurrent device at source:
+  Rating amps: ________________________________
+  Type: _______________________________________
+
+Grounding and bonding:
+  Equipment grounding conductor size per 250 122: ______
+  Neutral isolated at subpanel yes or no: ______
+  Bonding screw removed yes or no: _____________
+
+Working and dedicated space:
+  110 26 clearance and 110 26 E dedicated space confirmed
+                    </div>
+                `
+            },
+            "detached-structure": {
+                title: "Detached Structure Feeder",
+                content: `
+                    <h1>Detached Structure Feeder One Line and Checklist</h1>
+                    
+                    <h2>ASCII One Line Diagram</h2>
+                    <div class="code-block">
+Main dwelling service equipment
+  Outdoor emergency disconnect per 230 85
+  Main service panel with SPD per 230 67
+
+Feeder to detached structure
+  Two pole feeder breaker rated ______ A per 215 3
+  Feeder conductors ____ AWG material ____ insulation THHN or similar in conduit
+  Equipment grounding conductor included with feeder per 250 32 B 1
+  Neutral conductor isolated at detached structure panel
+
+Detached structure panel
+  Building disconnect per 225 31 and 225 32
+  Grounding electrode system per 250 32 A with electrode conductor size ______
+  Panel working space per 110 26 and dedicated space per 110 26 E
+  Directory per 408 4 A
+
+If PV or ESS located at detached structure
+  Apply 705 11 or 705 12 at that structure
+  Provide local disconnects and labels and update 705 10 directory at dwelling service
+                    </div>
+
+                    <h2>Detached Structure Checklist</h2>
+                    <div class="section-card">
+                        <ul>
+                            <li>Feeder sized and protected per 215 and 240</li>
+                            <li>Four wire feeder hot hot neutral equipment ground</li>
+                            <li>Grounding electrode system at detached building per 250.32 A</li>
+                            <li>Building disconnect at detached building per 225.31 and 225.32</li>
+                            <li>Neutral isolated and equipment grounding conductor bonded to enclosure at detached panel</li>
+                            <li>Working space and dedicated space verified</li>
+                            <li>Labeling and directories updated</li>
+                        </ul>
+                    </div>
+                `
+            },
+            "labels": {
+                title: "Labels and Placards",
+                content: `
+                    <h1>Label and Placard Package Text</h1>
+                    <div class="section-card">
+                        <p>Use these exact texts in your label schedule.</p>
+                    </div>
+
+                    <h2>Emergency Disconnect at Dwelling Service</h2>
+                    <div class="code-block">
+Text line 1: EMERGENCY DISCONNECT
+Text line 2: SERVICE DISCONNECT
+Apply per 230 85 E
+                    </div>
+
+                    <h2>If Meter Disconnect Not Service Equipment</h2>
+                    <div class="code-block">
+Text: EMERGENCY DISCONNECT METER DISCONNECT NOT SERVICE EQUIPMENT
+                    </div>
+
+                    <h2>Multiple Sources Directory at Service per 705.10</h2>
+                    <div class="code-block">
+Text: CAUTION MULTIPLE SOURCES OF POWER
+Include locations of Utility Service Disconnect PV AC Disconnect or backfeed breaker ESS Disconnect
+Include service contact phone
+                    </div>
+
+                    <h2>PV AC Point of Interconnection Label per 690.54</h2>
+                    <div class="code-block">
+Text: PHOTOVOLTAIC SYSTEM AC POINT OF CONNECTION
+Rated AC output current _____ A  Nominal AC voltage _____ V
+                    </div>
+
+                    <h2>Rapid Shutdown Label per 690.56 C</h2>
+                    <div class="code-block">
+Text: PV SYSTEM EQUIPPED WITH RAPID SHUTDOWN
+Instruction to operate the rapid shutdown switch to off
+                    </div>
+                `
+            },
+            "permit-set": {
+                title: "Permit Set Requirements",
+                content: `
+                    <h1>What to Include in the Permit Set</h1>
+                    <div class="section-card">
+                        <ul>
+                            <li>Cover sheet with scope summary and the <strong>subpanel feeder worksheet</strong> filled where applicable</li>
+                            <li>Site plan and exterior elevations showing <strong>panel and disconnect locations</strong> and <strong>rapid shutdown initiator</strong></li>
+                            <li>One-line diagrams for <strong>utility service</strong>, <strong>PV</strong>, <strong>ESS</strong>, <strong>EVSE</strong> and <strong>detached structures</strong></li>
+                            <li>Panel schedules with <strong>AFCI and GFCI indications</strong> and <strong>directory text</strong></li>
+                            <li>Label schedule using the texts in section J</li>
+                            <li>Product cut sheets: PV inverter, ESS system UL 9540, EVSE, SPD</li>
+                            <li>Load calculation per Article 220</li>
+                            <li>Fire notes for ESS referencing CRC R328 and CFC 1206 where applicable</li>
+                        </ul>
+                    </div>
+                `
+            }
+        };
+
+        // App functionality
+        class WorkflowApp {
+            constructor() {
+                this.currentSection = 'overview';
+                this.init();
+            }
+
+            init() {
+                this.bindEvents();
+                this.loadSection('overview');
+                this.setupSearch();
+                this.setupBackToTop();
+            }
+
+            bindEvents() {
+                // Navigation
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    item.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const section = item.dataset.section;
+                        this.loadSection(section);
+                        this.setActiveNav(item);
+                    });
+                });
+
+                // Mobile menu toggle
+                document.getElementById('menuToggle').addEventListener('click', () => {
+                    this.toggleSidebar();
+                });
+
+                // Close sidebar when clicking main content on mobile
+                document.getElementById('mainContent').addEventListener('click', () => {
+                    if (window.innerWidth <= 768) {
+                        this.closeSidebar();
+                    }
+                });
+            }
+
+            loadSection(sectionKey) {
+                const section = sections[sectionKey];
+                if (!section) return;
+
+                this.currentSection = sectionKey;
+                document.getElementById('sectionTitle').textContent = section.title;
+                document.getElementById('contentArea').innerHTML = section.content;
+
+                // Re-initialize Mermaid for new diagrams
+                if (section.content.includes('mermaid')) {
+                    mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+                }
+
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+
+            setActiveNav(activeItem) {
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                activeItem.classList.add('active');
+            }
+
+            toggleSidebar() {
+                const sidebar = document.getElementById('sidebar');
+                const mainContent = document.getElementById('mainContent');
+                
+                sidebar.classList.toggle('show');
+                sidebar.classList.toggle('collapsed');
+                mainContent.classList.toggle('expanded');
+            }
+
+            closeSidebar() {
+                const sidebar = document.getElementById('sidebar');
+                const mainContent = document.getElementById('mainContent');
+                
+                sidebar.classList.remove('show');
+                sidebar.classList.add('collapsed');
+                mainContent.classList.add('expanded');
+            }
+
+            setupSearch() {
+                const searchInput = document.getElementById('searchInput');
+                searchInput.addEventListener('input', (e) => {
+                    this.filterNavigation(e.target.value);
+                });
+            }
+
+            filterNavigation(query) {
+                const navItems = document.querySelectorAll('.nav-item');
+                const lowerQuery = query.toLowerCase();
+
+                navItems.forEach(item => {
+                    const text = item.textContent.toLowerCase();
+                    const section = sections[item.dataset.section];
+                    const sectionContent = section ? section.content.toLowerCase() : '';
+                    
+                    if (text.includes(lowerQuery) || sectionContent.includes(lowerQuery)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            }
+
+            setupBackToTop() {
+                const backToTop = document.getElementById('backToTop');
+                
+                window.addEventListener('scroll', () => {
+                    if (window.pageYOffset > 300) {
+                        backToTop.classList.add('visible');
+                    } else {
+                        backToTop.classList.remove('visible');
+                    }
+                });
+
+                backToTop.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+        }
+
+        // Initialize app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new WorkflowApp();
+        });
+    </script>
+</body>
+</html>
