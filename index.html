@@ -331,7 +331,7 @@
             background: #5a67d8;
             transform: translateY(-2px);
         }
-        \n        /* Interactive Checklist Styles */\n        .checklist-form {\n            background: white;\n            border-radius: 12px;\n            padding: 30px;\n            margin: 20px 0;\n            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);\n        }\n\n        .checklist-header {\n            display: grid;\n            grid-template-columns: 1fr 1fr 1fr;\n            gap: 20px;\n            margin-bottom: 30px;\n            padding-bottom: 20px;\n            border-bottom: 2px solid #e2e8f0;\n        }\n\n        .checklist-field {\n            display: flex;\n            flex-direction: column;\n        }\n\n        .checklist-field label {\n            font-weight: 600;\n            margin-bottom: 5px;\n            color: #2d3748;\n        }\n\n        .checklist-field input {\n            padding: 8px 12px;\n            border: 1px solid #d1d5db;\n            border-radius: 6px;\n            font-size: 14px;\n        }\n\n        .checklist-field input:focus {\n            outline: none;\n            border-color: #667eea;\n            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);\n        }\n\n        .checklist-items {\n            display: grid;\n            gap: 15px;\n        }\n\n        .checklist-item {\n            display: flex;\n            align-items: center;\n            padding: 12px;\n            background: #f8f9fa;\n            border-radius: 8px;\n            transition: all 0.2s ease;\n        }\n\n        .checklist-item:hover {\n            background: #e9ecef;\n        }\n\n        .checklist-item input[type=\"checkbox\"] {\n            width: 18px;\n            height: 18px;\n            margin-right: 12px;\n            cursor: pointer;\n        }\n\n        .checklist-item label {\n            flex: 1;\n            cursor: pointer;\n            margin: 0;\n            display: flex;\n            justify-content: space-between;\n            align-items: center;\n        }\n\n        .code-ref {\n            background: #667eea;\n            color: white;\n            padding: 2px 8px;\n            border-radius: 4px;\n            font-size: 0.8rem;\n            font-weight: 500;\n        }\n\n        .calculation-helper {\n            background: linear-gradient(135deg, #e0f2fe 0%, #b3e5fc 100%);\n            border: 1px solid #29b6f6;\n            padding: 20px;\n            border-radius: 8px;\n            margin: 20px 0;\n        }\n\n        .calculation-helper h4 {\n            color: #0277bd;\n            margin-bottom: 15px;\n        }\n\n        .calc-row {\n            display: grid;\n            grid-template-columns: 200px 100px 50px;\n            gap: 10px;\n            align-items: center;\n            margin-bottom: 10px;\n        }\n\n        .calc-input {\n            padding: 8px;\n            border: 1px solid #29b6f6;\n            border-radius: 4px;\n            text-align: center;\n        }\n\n        .calc-result {\n            background: #4caf50;\n            color: white;\n            padding: 8px;\n            border-radius: 4px;\n            text-align: center;\n            font-weight: 600;\n        }\n\n        .calc-result.fail {\n            background: #f44336;\n        }\n\n        .notes-section {\n            margin-top: 30px;\n        }\n\n        .notes-section textarea {\n            width: 100%;\n            min-height: 100px;\n            padding: 12px;\n            border: 1px solid #d1d5db;\n            border-radius: 6px;\n            font-family: inherit;\n            resize: vertical;\n        }\n\n        .print-button {\n            background: #10b981;\n            color: white;\n            border: none;\n            padding: 12px 24px;\n            border-radius: 8px;\n            cursor: pointer;\n            font-size: 16px;\n            margin-top: 20px;\n            transition: all 0.2s ease;\n        }\n\n        .print-button:hover {\n            background: #059669;\n            transform: translateY(-1px);\n        }\n\n        @media (max-width: 768px) {\n            .checklist-header {\n                grid-template-columns: 1fr;\n                gap: 15px;\n            }\n            \n            .calc-row {\n                grid-template-columns: 1fr;\n                gap: 8px;\n            }\n        }\n    </style>
+        \n        /* Interactive Checklist Styles */\n        .checklist-form {\n            background: white;\n            border-radius: 12px;\n            padding: 30px;\n            margin: 20px 0;\n            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);\n        }\n\n        .checklist-header {\n            display: grid;\n            grid-template-columns: 1fr 1fr 1fr;\n            gap: 20px;\n            margin-bottom: 30px;\n            padding-bottom: 20px;\n            border-bottom: 2px solid #e2e8f0;\n        }\n\n        .checklist-field {\n            display: flex;\n            flex-direction: column;\n        }\n\n        .checklist-field label {\n            font-weight: 600;\n            margin-bottom: 5px;\n            color: #2d3748;\n        }\n\n        .checklist-field input {\n            padding: 8px 12px;\n            border: 1px solid #d1d5db;\n            border-radius: 6px;\n            font-size: 14px;\n        }\n\n        .checklist-field input:focus {\n            outline: none;\n            border-color: #667eea;\n            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);\n        }\n\n        .checklist-items {\n            display: grid;\n            gap: 15px;\n        }\n\n        .checklist-item {\n            display: flex;\n            align-items: center;\n            padding: 12px;\n            background: #f8f9fa;\n            border-radius: 8px;\n            transition: all 0.2s ease;\n        }\n\n        .checklist-item:hover {\n            background: #e9ecef;\n        }\n\n        .checklist-item input[type=\"checkbox\"] {\n            width: 18px;\n            height: 18px;\n            margin-right: 12px;\n            cursor: pointer;\n        }\n\n        .checklist-item label {\n            flex: 1;\n            cursor: pointer;\n            margin: 0;\n            display: flex;\n            justify-content: space-between;\n            align-items: center;\n        }\n\n        .code-ref {\n            background: #667eea;\n            color: white;\n            padding: 2px 8px;\n            border-radius: 4px;\n            font-size: 0.8rem;\n            font-weight: 500;\n        }\n\n        .calculation-helper {\n            background: linear-gradient(135deg, #e0f2fe 0%, #b3e5fc 100%);\n            border: 1px solid #29b6f6;\n            padding: 20px;\n            border-radius: 8px;\n            margin: 20px 0;\n        }\n\n        .calculation-helper h4 {\n            color: #0277bd;\n            margin-bottom: 15px;\n        }\n\n        .calc-row {\n            display: grid;\n            grid-template-columns: 200px 100px 50px;\n            gap: 10px;\n            align-items: center;\n            margin-bottom: 10px;\n        }\n\n        .calc-input {\n            padding: 8px;\n            border: 1px solid #29b6f6;\n            border-radius: 4px;\n            text-align: center;\n        }\n\n        .calc-result {\n            background: #4caf50;\n            color: white;\n            padding: 8px;\n            border-radius: 4px;\n            text-align: center;\n            font-weight: 600;\n        }\n\n        .calc-result.fail {\n            background: #f44336;\n        }\n\n        .notes-section {\n            margin-top: 30px;\n        }\n\n        .notes-section textarea {\n            width: 100%;\n            min-height: 100px;\n            padding: 12px;\n            border: 1px solid #d1d5db;\n            border-radius: 6px;\n            font-family: inherit;\n            resize: vertical;\n        }\n\n        .print-button {\n            background: #10b981;\n            color: white;\n            border: none;\n            padding: 12px 24px;\n            border-radius: 8px;\n            cursor: pointer;\n            font-size: 16px;\n            margin-top: 20px;\n            transition: all 0.2s ease;\n        }\n\n        .print-button:hover {\n            background: #059669;\n            transform: translateY(-1px);\n        }\n\n        @media (max-width: 768px) {\n            .checklist-header {\n                grid-template-columns: 1fr;\n                gap: 15px;\n            }\n            \n            .calc-row {\n                grid-template-columns: 1fr;\n                gap: 8px;\n            }\n        }\n\n        /* Template Table Styles */\n        .template-tables {\n            display: grid;\n            gap: 30px;\n            margin: 30px 0;\n        }\n\n        .table-section {\n            background: white;\n            border-radius: 12px;\n            padding: 25px;\n            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);\n        }\n\n        .table-section h3 {\n            color: #2d3748;\n            margin-bottom: 15px;\n            padding-bottom: 10px;\n            border-bottom: 2px solid #e2e8f0;\n        }\n\n        .blank-template {\n            border: 2px dashed #cbd5e0;\n            background: #f7fafc;\n        }\n\n        .sample-completed {\n            border: 2px solid #48bb78;\n            background: #f0fff4;\n        }\n\n        .template-table {\n            width: 100%;\n            border-collapse: collapse;\n            margin: 15px 0;\n            font-size: 14px;\n        }\n\n        .template-table th {\n            background: #667eea;\n            color: white;\n            padding: 12px 8px;\n            text-align: left;\n            font-weight: 600;\n            border: 1px solid #5a67d8;\n        }\n\n        .template-table td {\n            padding: 10px 8px;\n            border: 1px solid #e2e8f0;\n            vertical-align: top;\n        }\n\n        .blank-template .template-table td {\n            height: 40px;\n            background: #f8f9fa;\n        }\n\n        .template-table tr:nth-child(even) td {\n            background: #f8f9fa;\n        }\n\n        .sample-completed .template-table tr:nth-child(even) td {\n            background: #f0fff4;\n        }\n\n        .code-column {\n            font-family: 'Monaco', 'Consolas', monospace;\n            font-weight: 600;\n            color: #667eea;\n        }\n    </style>
 </head>
 <body>
     <div class="app-container">
@@ -350,21 +350,20 @@
                 <h3>Main Sections</h3>
                 <a href="#" class="nav-item active" data-section="overview">Overview</a>
                 <a href="#" class="nav-item" data-section="executive-summary">Executive Summary</a>
-                <a href="#" class="nav-item" data-section="end-to-end-workflow">End-to-End Workflow</a>
-                <a href="#" class="nav-item" data-section="service-panel">Service & Panel Location</a>
-                <a href="#" class="nav-item" data-section="subpanels-feeders">Subpanels & Feeders</a>
-                <a href="#" class="nav-item" data-section="pv-integration">PV Integration</a>
-                <a href="#" class="nav-item" data-section="ev-infrastructure">EV Infrastructure</a>
-                <a href="#" class="nav-item" data-section="room-circuits">Room-by-Room Circuits</a>
-                <a href="#" class="nav-item" data-section="ess-integration">ESS Integration</a>
+                <a href="#" class="nav-item" data-section="service-panel-v3">1. Service & Panel</a>
+                <a href="#" class="nav-item" data-section="subpanels-feeders-v3">2. Subpanels & Feeders</a>
+                <a href="#" class="nav-item" data-section="pv-integration-v3">3. PV Integration</a>
+                <a href="#" class="nav-item" data-section="ev-infrastructure-v3">4. EV Infrastructure</a>
+                <a href="#" class="nav-item" data-section="room-circuits-v3">5. Room-by-Room Circuits</a>
+                <a href="#" class="nav-item" data-section="ess-integration-v3">6. ESS Integration</a>
+                <a href="#" class="nav-item" data-section="detached-structures-v3">7. Detached Structures</a>
             </div>
 
             <div class="nav-section">
                 <h3>Tools & References</h3>
-                <a href="#" class="nav-item" data-section="detached-structure">Detached Structure</a>
-                <a href="#" class="nav-item" data-section="labels">Label Schedule</a>
-                <a href="#" class="nav-item" data-section="code-citations">Code Citation Block</a>
-                <a href="#" class="nav-item" data-section="checklists">Downloadable Checklists</a>
+                <a href="#" class="nav-item" data-section="labels-v3">8. Label Schedule</a>
+                <a href="#" class="nav-item" data-section="code-citations-v3">9. Code Citation Block</a>
+                <a href="#" class="nav-item" data-section="checklists">Fillable PDFs</a>
             </div>
 
             <div class="nav-section">
@@ -446,68 +445,211 @@
                 content: `
                     <h1>Executive Summary</h1>
                     <div class="section-card">
-                        <p>California residential electrical design and permitting for one- and two-family dwellings is governed primarily by the <strong>2025 California Electrical Code (CEC, Title 24 Part 3)</strong>, which is based on the <strong>2023 NEC</strong> with California amendments.</p>
+                        <p>California residential electrical design and permitting for <strong>one- and two-family dwellings</strong> is governed by:</p>
                         
-                        <h3>Additional Requirements</h3>
                         <ul>
-                            <li><strong>CALGreen (Title 24 Part 11)</strong> for EV infrastructure</li>
-                            <li><strong>California Building Code (Title 24 Part 2)</strong></li>
-                            <li><strong>California Energy Code (Title 24 Part 6)</strong></li>
-                            <li>Local amendments (Los Angeles County, Bay Area jurisdictions)</li>
+                            <li><strong>2025 California Electrical Code (CEC, Title 24 Part 3)</strong> — based on the NEC with state amendments</li>
+                            <li><strong>CALGreen (Title 24 Part 11)</strong> — mandatory EV infrastructure requirements</li>
+                            <li><strong>California Energy Code (Title 24 Part 6)</strong> — load calculations, efficiency measures</li>
+                            <li><strong>CRC R328</strong> & <strong>CFC 1206</strong> — energy storage/fire requirements</li>
+                            <li>Local amendments (L.A. County, Bay Area jurisdictions)</li>
                         </ul>
                     </div>
                     
                     <h2>Key Drivers</h2>
                     <div class="section-card">
                         <ul>
-                            <li><strong>Service & Demarcation:</strong> Outdoor emergency disconnects, working clearances, surge protection devices, directories</li>
-                            <li><strong>Photovoltaics:</strong> Supply- or load-side interconnections, 120% bus rule, rapid shutdown, placards</li>
-                            <li><strong>EV Infrastructure:</strong> EV-capable readiness required in all new dwellings, EVSE branch sizing, AFCI/GFCI protection</li>
-                            <li><strong>Room-by-Room Circuits:</strong> Mandatory small appliance, laundry, bath, garage, and receptacle spacing rules with AFCI/GFCI</li>
-                            <li><strong>Energy Storage Systems (ESS):</strong> UL 9540 listing, CRC R328 siting, fire/life safety integration with CFC 1206</li>
-                            <li><strong>Labeling & Documentation:</strong> Prescribed label texts, directories, plan stamps, and checklists for permit sets</li>
+                            <li>Outdoor emergency disconnects</li>
+                            <li>Surge protection at services</li>
+                            <li>PV rapid shutdown & placards</li>
+                            <li>EV-capable infrastructure (CALGreen)</li>
+                            <li>Room-by-room AFCI/GFCI enforcement</li>
+                            <li>UL 9540-listed ESS placement & fire safety</li>
                         </ul>
                     </div>
                 `
             },
-            "end-to-end-workflow": {
-                title: "End-to-End Workflow",
+            "service-panel-v3": {
+                title: "1. Service and Panel Location, Dimensions, and Directories",
                 content: `
-                    <h1>End-to-End Workflow</h1>
-                    <div class="section-card">
-                        <p>This diagram shows the complete electrical design process from initial planning through final inspection. Each step builds upon the previous ones and includes specific 2025 CEC requirements.</p>
-                    </div>
+                    <h1>1. Service and Panel Location, Dimensions, and Directories</h1>
+                    
+                    <h2>Design Workflow</h2>
                     <div class="mermaid-container">
                         <div class="mermaid">
                             flowchart TB
-                                Z0[Pre design]
-                                Z1[Load calculation including EV PV ESS per Article 220]
-                                Z2[Service and panel location and dimensions per 110 26 and 240 24 and 230 85]
-                                Z3{Need additional panels or feeders}
-                                Z4[Design subpanels and feeders per 215 and 310 16 and 250 32]
-                                Z5[Photovoltaic tie in per 705 11 or 705 12 plus rapid shutdown per 690 12]
-                                Z6[EV readiness and EVSE per CALGreen 4 106 4 1 and CEC Article 625]
-                                Z7[Energy storage integration per CRC R328 CFC 1206 CEC 705 and 706]
-                                Z8[Labels and directories per 230 85 705 10 690 56 408 4]
-                                Z9[Prepare one line site plans elevations and panel schedules]
-                                ZA[Permit submittal corrections and approvals]
-                                ZB[Inspections rough to final with labels directories and protective devices]
+                                A[Confirm service size per 220]
+                                B[Select service equipment location per 230.70 and 230.85]
+                                C[Check prohibited panel locations per 240.24]
+                                D[Verify working clearance per 110.26 A]
+                                E[Verify dedicated equipment space per 110.26 E]
+                                F[Verify handle height per 240.24 A]
+                                G[Confirm door swing and illumination per 110.26]
+                                H[Install SPD per 230.67]
+                                I[Provide outdoor emergency disconnect per 230.85 E]
+                                J[Provide intersystem bonding per 250.94]
+                                K[Provide panel directory per 408.4 A and 705.10]
                                 
-                                Z0 --> Z1 --> Z2 --> Z3
-                                Z3 -- Yes --> Z4 --> Z5
-                                Z3 -- No --> Z5
-                                Z5 --> Z6 --> Z7 --> Z8 --> Z9 --> ZA --> ZB
+                                A --> B --> C --> D --> E --> F --> G --> H --> I --> J --> K
                         </div>
                     </div>
-                    <div class="highlight-box">
-                        <h4>Critical Decision Point</h4>
-                        <p>Step Z3 determines whether additional panels or feeders are needed based on:</p>
-                        <ul>
-                            <li>Load calculation results</li>
-                            <li>Circuit count requirements</li>
-                            <li>Distance and voltage drop considerations</li>
-                            <li>System segregation needs (PV, ESS, backup loads)</li>
-                        </ul>
+
+                    <div class="template-tables">
+                        <div class="table-section blank-template">
+                            <h3>Blank Template</h3>
+                            <table class="template-table">
+                                <thead>
+                                    <tr>
+                                        <th>Code</th>
+                                        <th>Requirement</th>
+                                        <th>Rationale</th>
+                                        <th>Verified (Y/N)</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                                    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                                    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                                    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="table-section sample-completed">
+                            <h3>Sample Completed Table</h3>
+                            <table class="template-table">
+                                <thead>
+                                    <tr>
+                                        <th>Code</th>
+                                        <th>Requirement</th>
+                                        <th>Rationale</th>
+                                        <th>Verified (Y/N)</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="code-column">110.26</td>
+                                        <td>36" clearance</td>
+                                        <td>Prevents shock/fire during maintenance</td>
+                                        <td><strong>Y</strong></td>
+                                        <td>Inspector confirmed</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="code-column">230.85</td>
+                                        <td>Outdoor disconnect</td>
+                                        <td>Firefighter shutoff</td>
+                                        <td><strong>Y</strong></td>
+                                        <td>At meter, labeled</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="code-column">230.67</td>
+                                        <td>Surge protection</td>
+                                        <td>Prevents transient damage</td>
+                                        <td><strong>Y</strong></td>
+                                        <td>SPD Type 2 at service</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="code-column">408.4</td>
+                                        <td>Panel directory</td>
+                                        <td>Required for identification</td>
+                                        <td><strong>Y</strong></td>
+                                        <td>Completed and affixed</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `
+            },
+            "subpanels-feeders-v3": {
+                title: "2. Subpanels and Feeders",
+                content: `
+                    <h1>2. Subpanels and Feeders</h1>
+                    
+                    <h2>Design Workflow</h2>
+                    <div class="mermaid-container">
+                        <div class="mermaid">
+                            flowchart TB
+                                A[Demand calculation per 220]
+                                B{Exceeds service or bus rating}
+                                C{Circuit count exceeds spaces}
+                                D{Multi story or voltage drop concerns}
+                                E{PV ESS generator segregation needed}
+                                F[Add subpanel per 215 310.16 250.32]
+                                G[Proceed with single panel]
+                                
+                                A --> B
+                                B -- Yes --> F
+                                B -- No --> C
+                                C -- Yes --> F
+                                C -- No --> D
+                                D -- Yes --> F
+                                D -- No --> E
+                                E -- Yes --> F
+                                E -- No --> G
+                        </div>
+                    </div>
+
+                    <div class="template-tables">
+                        <div class="table-section blank-template">
+                            <h3>Blank Template</h3>
+                            <table class="template-table">
+                                <thead>
+                                    <tr>
+                                        <th>Code</th>
+                                        <th>Requirement</th>
+                                        <th>Rationale</th>
+                                        <th>Verified (Y/N)</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                                    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                                    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="table-section sample-completed">
+                            <h3>Sample Completed Table</h3>
+                            <table class="template-table">
+                                <thead>
+                                    <tr>
+                                        <th>Code</th>
+                                        <th>Requirement</th>
+                                        <th>Rationale</th>
+                                        <th>Verified</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="code-column">215</td>
+                                        <td>Feeder OCPD at source</td>
+                                        <td>Prevents overload</td>
+                                        <td><strong>Y</strong></td>
+                                        <td>100A feeder breaker</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="code-column">310.16</td>
+                                        <td>Feeder ampacity</td>
+                                        <td>Matches demand</td>
+                                        <td><strong>Y</strong></td>
+                                        <td>2 AWG Cu @ 100A</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="code-column">250.32</td>
+                                        <td>GES at detached</td>
+                                        <td>Safety ground</td>
+                                        <td><strong>Y</strong></td>
+                                        <td>Two rods at shed</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 `
             },
