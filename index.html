@@ -660,6 +660,7 @@
                 <h3>Tools & References</h3>
                 <a href="#" class="nav-item" data-section="labels-v3">8. Label Schedule</a>
                 <a href="#" class="nav-item" data-section="code-citations-v3">9. Code Citation Block</a>
+                <a href="#" class="nav-item" data-section="appendix">Appendix – Evidence & Adoption</a>
                 <a href="#" class="nav-item" data-section="checklists">Fillable PDFs</a>
             </div>
 
@@ -762,6 +763,16 @@
                             <li>EV-capable infrastructure (CALGreen)</li>
                             <li>Room-by-room AFCI/GFCI enforcement</li>
                             <li>UL 9540-listed ESS placement & fire safety</li>
+                        </ul>
+                    </div>
+                    
+                    <h2>Outlet and Switch Requirements (2025+ Highlights)</h2>
+                    <div class="section-card">
+                        <ul>
+                            <li><strong>General living areas</strong>: 6-ft rule along wall line; any wall space ≥2 ft wide requires coverage; hallways ≥10 ft need a receptacle</li>
+                            <li><strong>Kitchens</strong>: counter/work-surface outlets per 210.52(C); <strong>2023 changes</strong> clarify locations and remove below-counter options previously allowed—use on-counter, in-counter listed assemblies, or ≤20 in above. Islands/peninsulas governed by 210.52(C)(2)(3)</li>
+                            <li><strong>Switching</strong>: wall-switch-controlled lighting outlets where required by 210.70; 3-way switching for stairways with ≥6 risers; <strong>neutral in most switch boxes</strong> (404.2(C))</li>
+                            <li><strong>TR receptacles</strong>: required in dwelling areas listed in 406.12</li>
                         </ul>
                     </div>
                 `
@@ -1361,13 +1372,26 @@
                             <li>Detached structure feeder checklist</li>
                             <li>Label schedule copy blocks</li>
                             <li>Plan stamp block with code citations</li>
+                            <li><strong>NEW:</strong> Mini Room-Sizer helpers for general rooms</li>
                         </ul>
+                    </div>
+                    
+                    <div class="section-card">
+                        <h3>New in v5: Mini Room-Sizer</h3>
+                        <p>The updated package includes <strong>Mini Room-Sizer</strong> helpers for general rooms where you can enter:</p>
+                        <ul>
+                            <li><strong>Perimeter (ft)</strong></li>
+                            <li><strong>Excluded openings (ft)</strong> (doors, large openings, fireplaces)</li>
+                            <li>It shows fields to record <strong>Effective length = perimeter − exclusions</strong></li>
+                            <li>And a <strong>Suggested minimum receptacle count = ceil(effective ÷ 12)</strong></li>
+                        </ul>
+                        <p><em>Guidance only — you must still meet the 6-ft wall line rule and all special space rules.</em></p>
                     </div>
                     
                     <div class="highlight-box">
                         <h4>📄 Download Package</h4>
-                        <p><a href="electrical_workflows_checklists_v4.pdf" download class="badge" style="font-size: 1rem; padding: 12px 20px; text-decoration: none; background: #10b981; border-radius: 8px;">Download electrical_workflows_checklists_v4.pdf</a></p>
-                        <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">Complete package of fillable PDF checklists for field use and plan review</p>
+                        <p><a href="electrical_workflows_checklists_v5.pdf" download class="badge" style="font-size: 1rem; padding: 12px 20px; text-decoration: none; background: #10b981; border-radius: 8px;">Download electrical_workflows_checklists_v5.pdf</a></p>
+                        <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">Complete package of fillable PDF checklists for field use and plan review. <strong>Updated with Mini Room-Sizer helpers!</strong></p>
                     </div>
                 `
             },
@@ -1456,112 +1480,300 @@
                 `
             },
             "room-circuits-v3": {
-                title: "5. Room-by-Room Circuits",
+                title: "5. Room-by-Room Circuits and Outlet/Switch Counts, Spacing, Locations",
                 content: `
                     
-                    
-                    <h2>Design Workflow</h2>
+                    <h2>5.1 Overview Diagram</h2>
                     <div class="mermaid-container">
                         <div class="mermaid">
                             flowchart TB
-                                A[Lay out receptacles per 210.52]
-                                B[Assign 20A circuits per 210.11 C]
-                                C[Apply GFCI per 210.8 A]
-                                D[Apply AFCI per 210.12 A]
-                                E[Update panel schedule per 408.4 A]
-                                
-                                A --> B --> C --> D --> E
+                                A[General rooms apply 6 ft wall line rule per 210.52 A]
+                                B[Hallways 10 ft or more need one receptacle per 210.52 H]
+                                C[Kitchens use 210.52 C for counters islands peninsulas]
+                                D[Bathrooms 210.52 D dedicated 20A and GFCI]
+                                E[Laundry 210.52 F dedicated 20A]
+                                F[Garage and accessory 210.52 G plus GFCI]
+                                G[Outdoors 210.52 E front and back and balconies]
+                                H[Switching 210.70 and neutral in boxes per 404.2 C]
+                                A --> B --> C --> D --> E --> F --> G --> H
                         </div>
+                    </div>
+
+                    <h2>5.2 General Living Areas (living, family, dining, bedrooms, similar)</h2>
+                    <div class="section-card">
+                        <h3>Code Rules</h3>
+                        <ul>
+                            <li><strong>6-ft rule</strong>: No point along the floor line in any wall space is more than <strong>6 ft</strong> from a receptacle. Wall spaces ≥<strong>2 ft</strong> count; exclude door openings. Floor receptacles count if within <strong>18 in</strong> of the wall.</li>
+                            <li><strong>Minimum count</strong>: Place receptacles so the 6-ft rule is satisfied around the room's usable wall spaces. (Trade guidance example: a ~13.5 ft by 17.5 ft room pencils out to <strong>five</strong> min receptacles.)</li>
+                            <li><strong>Hallways</strong>: If the hallway length is <strong>≥10 ft</strong> (measured along centerline), provide <strong>at least one</strong> receptacle.</li>
+                            <li><strong>TR receptacles</strong>: Tamper-resistant required in dwelling unit areas listed in 406.12.</li>
+                        </ul>
                     </div>
 
                     <div class="template-tables">
                         <div class="table-section blank-template">
-                            <h3>Blank Template</h3>
+                            <h3>Blank Checklist (General Room)</h3>
                             <table class="template-table">
                                 <thead>
                                     <tr>
-                                        <th>Space</th>
-                                        <th>Circuit</th>
-                                        <th>Ampacity</th>
-                                        <th>AFCI</th>
-                                        <th>GFCI</th>
                                         <th>Code</th>
-                                        <th>Rationale</th>
+                                        <th>Requirement</th>
+                                        <th>Design note / location plan</th>
+                                        <th>Verified</th>
+                                        <th>Notes</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                                    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                                    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                                    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                                    <tr><td>210.52(A)(1)(2)</td><td>6-ft rule; wall spaces ≥2 ft</td><td>Lay out around perimeter (ignore doors)</td><td></td><td></td></tr>
+                                    <tr><td>210.52(A)(3)</td><td>Floor recepts count if ≤18 in from wall</td><td>Use for furniture layouts</td><td></td><td></td></tr>
+                                    <tr><td>210.52(H)</td><td>Hallways ≥10 ft → ≥1 recept</td><td>Place midpoint; avoid door swing</td><td></td><td></td></tr>
+                                    <tr><td>406.12</td><td>TR receptacles</td><td>Specify TR devices</td><td></td><td></td></tr>
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+
+                    <h2>5.3 Kitchens – Walls, Counters, Islands, Peninsulas</h2>
+                    <div class="section-card">
+                        <h3>Wall-line receptacles (not countertop duty)</h3>
+                        <p>Apply <strong>210.52(A)</strong> 6-ft rule along wall line for kitchen walls not serving counters.</p>
                         
-                        <div class="table-section sample-completed">
-                            <h3>Sample Completed Table</h3>
+                        <h3>Countertops and work surfaces (critical)</h3>
+                        <p>Apply <strong>210.52(C)</strong>. Core points you must hit:</p>
+                        <ul>
+                            <li>Provide receptacle outlets for <strong>counter/work surfaces ≥12 in</strong> wide per the subsections.</li>
+                            <li><strong>Location</strong> must follow <strong>210.52(C)(3)</strong> — on/in the counter or <strong>≤20 in above</strong> the surface; <strong>2023</strong> revisions removed the older blanket allowance for <strong>below-counter</strong> locations that existed in prior cycles. Use listed pop-ups, on-counter, or compliant backsplashes.</li>
+                            <li><strong>Islands and peninsulas</strong>: Follow <strong>210.52(C)(2)(3)</strong> for "island and peninsular countertops and work surfaces." 2023 guidance emphasizes compliant <strong>on/in/≤20 in above</strong> solutions; below-counter provisions in 2020 were <strong>not carried forward</strong>.</li>
+                        </ul>
+                    </div>
+
+                    <div class="template-tables">
+                        <div class="table-section blank-template">
+                            <h3>Blank Checklist (Kitchen Counters)</h3>
                             <table class="template-table">
                                 <thead>
                                     <tr>
-                                        <th>Space</th>
-                                        <th>Circuit</th>
-                                        <th>Ampacity</th>
-                                        <th>AFCI</th>
-                                        <th>GFCI</th>
                                         <th>Code</th>
-                                        <th>Rationale</th>
+                                        <th>Requirement</th>
+                                        <th>Design note / location plan</th>
+                                        <th>Verified</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>210.52(C)(1)</td><td>Serve counters/work surfaces meeting width threshold</td><td>Map per counter segments</td><td></td><td></td></tr>
+                                    <tr><td>210.52(C)(3)</td><td>Outlet location on/in or ≤20 in above</td><td>Use pop-ups or backsplash</td><td></td><td></td></tr>
+                                    <tr><td>210.52(C)(2)(3)</td><td>Islands/peninsulas compliance</td><td>Provide at least one per rules</td><td></td><td></td></tr>
+                                    <tr><td>210.11(C)(1)</td><td>Two 20 A small-appliance circuits</td><td>Label SA1 and SA2</td><td></td><td></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <h2>5.4 Bathrooms</h2>
+                    <div class="section-card">
+                        <p><strong>At least one</strong> 20 A <strong>bath receptacle circuit</strong> (can serve multiple baths if allowed by design), and <strong>GFCI</strong> protection. Locate within applicable proximity to the basin per local practice (typical within <strong>3 ft</strong>). Core references: <strong>210.11(C)(3)</strong> and <strong>210.8(A)</strong>.</p>
+                    </div>
+
+                    <div class="template-tables">
+                        <div class="table-section blank-template">
+                            <h3>Blank Checklist (Bath)</h3>
+                            <table class="template-table">
+                                <thead>
+                                    <tr>
+                                        <th>Code</th>
+                                        <th>Requirement</th>
+                                        <th>Design note / location plan</th>
+                                        <th>Verified</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>210.11(C)(3)</td><td>20 A bath receptacle circuit</td><td>Dedicated or per design</td><td></td><td></td></tr>
+                                    <tr><td>210.8(A)</td><td>GFCI protection</td><td>At all bath receptacles</td><td></td><td></td></tr>
+                                    <tr><td>210.70</td><td>Wall-switch-controlled lighting outlet</td><td>See switching table</td><td></td><td></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <h2>5.5 Laundry Areas</h2>
+                    <div class="section-card">
+                        <p><strong>At least one</strong> receptacle in the <strong>laundry area</strong>, supplied by a <strong>20 A</strong> circuit. GFCI per 210.8(A).</p>
+                    </div>
+
+                    <div class="template-tables">
+                        <div class="table-section blank-template">
+                            <h3>Blank Checklist (Laundry)</h3>
+                            <table class="template-table">
+                                <thead>
+                                    <tr>
+                                        <th>Code</th>
+                                        <th>Requirement</th>
+                                        <th>Design note</th>
+                                        <th>Verified</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>210.52(F)</td><td>≥1 laundry receptacle</td><td>Locate within 6 ft of appliances</td><td></td><td></td></tr>
+                                    <tr><td>210.11(C)(2)</td><td>20 A laundry circuit</td><td>Dedicated</td><td></td><td></td></tr>
+                                    <tr><td>210.8(A)</td><td>GFCI protection</td><td>Required</td><td></td><td></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <h2>5.6 Garages and Accessory Buildings (with power)</h2>
+                    <div class="section-card">
+                        <p><strong>At least one</strong> receptacle in each <strong>garage</strong>; modern interpretations also consider <strong>per car bay</strong> placement—confirm with AHJ. All garage/outdoor receptacles <strong>GFCI</strong>. Core: <strong>210.52(G)</strong> and <strong>210.8(A)</strong>.</p>
+                    </div>
+
+                    <div class="template-tables">
+                        <div class="table-section blank-template">
+                            <h3>Blank Checklist (Garage)</h3>
+                            <table class="template-table">
+                                <thead>
+                                    <tr>
+                                        <th>Code</th>
+                                        <th>Requirement</th>
+                                        <th>Design note</th>
+                                        <th>Verified</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>210.52(G)</td><td>Garage receptacles</td><td>Provide at usable walls</td><td></td><td></td></tr>
+                                    <tr><td>210.8(A)</td><td>GFCI protection</td><td>All garage receptacles</td><td></td><td></td></tr>
+                                    <tr><td>210.70</td><td>Lighting outlet with wall switch</td><td>By vehicle door</td><td></td><td></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <h2>5.7 Outdoors</h2>
+                    <div class="section-card">
+                        <p><strong>Front and back</strong> of one- and two-family dwellings: readily accessible receptacle(s), not more than <strong>6½ ft</strong> above grade. <strong>Balconies/decks/porches</strong> attached to (or within 4 in of) the dwelling: <strong>≥1</strong> receptacle, not more than <strong>6½ ft</strong> above walking surface. <strong>All</strong> outdoor receptacles <strong>GFCI</strong>. Core: <strong>210.52(E)(1)(3)</strong> and <strong>210.8(A)</strong>.</p>
+                    </div>
+
+                    <div class="template-tables">
+                        <div class="table-section blank-template">
+                            <h3>Blank Checklist (Outdoors)</h3>
+                            <table class="template-table">
+                                <thead>
+                                    <tr>
+                                        <th>Code</th>
+                                        <th>Requirement</th>
+                                        <th>Design note</th>
+                                        <th>Verified</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>210.52(E)(1)</td><td>Front and back receptacles</td><td>Accessible from grade</td><td></td><td></td></tr>
+                                    <tr><td>210.52(E)(3)</td><td>Balcony deck porch receptacle</td><td>≤6.5 ft above surface</td><td></td><td></td></tr>
+                                    <tr><td>210.8(A)</td><td>GFCI</td><td>All outdoor receptacles</td><td></td><td></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <h2>5.8 Hallways and Stairs (switching and receptacles)</h2>
+                    <div class="section-card">
+                        <p><strong>Hallways</strong> ≥10 ft: <strong>≥1</strong> receptacle. <strong>Stairways</strong> with <strong>≥6 risers</strong>: switches at <strong>each floor level</strong> (and at landings with an entry), controlling required lighting outlet(s). Core: <strong>210.52(H)</strong> and <strong>210.70(A)(2)</strong>.</p>
+                    </div>
+
+                    <div class="template-tables">
+                        <div class="table-section blank-template">
+                            <h3>Blank Checklist (Hallways/Stairs)</h3>
+                            <table class="template-table">
+                                <thead>
+                                    <tr>
+                                        <th>Code</th>
+                                        <th>Requirement</th>
+                                        <th>Design note</th>
+                                        <th>Verified</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>210.52(H)</td><td>≥1 receptacle if ≥10 ft long</td><td>Centerline measurement</td><td></td><td></td></tr>
+                                    <tr><td>210.70(A)(2)</td><td>Switching for stairways</td><td>Provide 3-ways top and bottom</td><td></td><td></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <h2>5.9 Switching Rules Summary (dwelling)</h2>
+                    <div class="template-tables">
+                        <div class="table-section">
+                            <table class="template-table">
+                                <thead>
+                                    <tr>
+                                        <th>Topic</th>
+                                        <th>Requirement</th>
+                                        <th>Code</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><strong>Kitchen SA1</strong></td>
-                                        <td>20A 120V</td>
-                                        <td>20A</td>
-                                        <td>Y</td>
-                                        <td>Y</td>
-                                        <td class="code-column">210.11(C)(1), 210.8</td>
-                                        <td>Required small appliance</td>
+                                        <td>Habitable rooms lighting</td>
+                                        <td>Wall-switch-controlled lighting outlet (switched receptacle allowed except kitchens and baths)</td>
+                                        <td class="code-column">210.70(A)(1)</td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Bath</strong></td>
-                                        <td>20A 120V</td>
-                                        <td>20A</td>
-                                        <td>Y</td>
-                                        <td>Y</td>
-                                        <td class="code-column">210.11(C)(3)</td>
-                                        <td>Dedicated bath receptacle</td>
+                                        <td>Bathrooms, hallways, garages</td>
+                                        <td>At least one wall-switch-controlled lighting outlet</td>
+                                        <td class="code-column">210.70(A)(2)</td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Laundry</strong></td>
-                                        <td>20A 120V</td>
-                                        <td>20A</td>
-                                        <td>Y</td>
-                                        <td>Y</td>
-                                        <td class="code-column">210.11(C)(2)</td>
-                                        <td>Laundry receptacle</td>
+                                        <td>Stairways</td>
+                                        <td>Switches at each level for stairs with ≥6 risers</td>
+                                        <td class="code-column">210.70(A)(2)</td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Garage</strong></td>
-                                        <td>20A 120V</td>
-                                        <td>20A</td>
-                                        <td>Y</td>
-                                        <td>Y</td>
-                                        <td class="code-column">210.11(C)(4)</td>
-                                        <td>Required garage circuit</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Bedroom</strong></td>
-                                        <td>15A/20A</td>
-                                        <td>—</td>
-                                        <td>Y</td>
-                                        <td>N</td>
-                                        <td class="code-column">210.12</td>
-                                        <td>AFCI required in bedrooms</td>
+                                        <td>Neutral in switch boxes</td>
+                                        <td>Provide grounded (neutral) conductor at most switch locations; see exceptions</td>
+                                        <td class="code-column">404.2(C)</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
+
+                    <h2>5.10 Best-Practice Heights (not code-mandated unless amended by AHJ)</h2>
+                    <div class="template-tables">
+                        <div class="table-section">
+                            <table class="template-table">
+                                <thead>
+                                    <tr>
+                                        <th>Device</th>
+                                        <th>Typical height above finished floor</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>General receptacles</td>
+                                        <td>12–16 in AFF</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Kitchen counter receptacles</td>
+                                        <td>On/in counter or ≤20 in above per 210.52(C)(3)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Switches</td>
+                                        <td>42–48 in AFF near latch-side of door</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Garage receptacles</td>
+                                        <td>18 in AFF recommended for practical clearance</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <p><em>Heights above are practice standards; verify ADA/owner standards and any local amendments. Code height limits apply to specific cases such as ≤20 in above counters.</em></p>
                 `
             },
             "ess-integration-v3": {
@@ -1809,6 +2021,31 @@
                             </tr>
                         </tbody>
                     </table>
+                `
+            },
+            "appendix": {
+                title: "Appendix – Evidence and Adoption",
+                content: `
+                    
+                    <div class="section-card">
+                        <h3>Code Basis and References</h3>
+                        <ul>
+                            <li><strong>CEC 2025</strong> adopts <strong>NEC 2023</strong> with CA amendments. Use NEC 2023 article numbers as the technical baseline and apply local amendments where stricter.</li>
+                            <li>Receptacle spacing and locations across dwelling areas summarized from <strong>NEC 210.52</strong>; island/peninsula and counter rules per <strong>210.52(C)</strong> with <strong>2023</strong> revisions; hallways <strong>210.52(H)</strong>; foyers <strong>210.52(I)</strong> (if applicable).</li>
+                            <li>Switching locations and stair rules per <strong>210.70</strong>; neutral at switches per <strong>404.2(C)</strong>.</li>
+                            <li>TR receptacles per <strong>406.12</strong>.</li>
+                        </ul>
+                    </div>
+                    
+                    <h2>Quick Design Example (How to Count in a Bedroom)</h2>
+                    <div class="section-card">
+                        <ol>
+                            <li><strong>Step 1:</strong> Trace usable wall spaces (≥2 ft wide), exclude doors.</li>
+                            <li><strong>Step 2:</strong> Place receptacles so <strong>no point</strong> along the wall line is <strong>>6 ft</strong> from a receptacle.</li>
+                            <li><strong>Step 3:</strong> Hall adjoining hallway ≥10 ft? Add hallway receptacle.</li>
+                        </ol>
+                        <p><em>Trade example shows a ~13.5′×17.5′ room often needs <strong>5</strong> receptacles minimum when laid out to comply.</em></p>
+                    </div>
                 `
             },
             "service-panel-checklist": {
