@@ -1,14 +1,14 @@
-# California Residential Electrical Design and Permit Workflow
+# California Residential Electrical Design and Permit Workflow (2025+)
 
 🔌 **Interactive Web App for Electrical Contractors and Engineers**
 
 ## 🌟 Overview
 
-This web application provides an interactive guide to the complete electrical design and permit process for residential projects in California. It transforms the comprehensive workflow documentation into an easy-to-navigate, mobile-friendly interface.
+This web application provides an interactive guide to the complete electrical design and permit process for residential projects in California based on the **2025 California Electrical Code (CEC)** and **2023 NEC** with California amendments. It transforms the comprehensive workflow documentation into an easy-to-navigate, mobile-friendly interface.
 
 ## 🚀 Live Demo
 
-Visit the live application: **[https://yourusername.github.io/elec_permit](https://yourusername.github.io/elec_permit)**
+Visit the live application: **[https://ijayklein.github.io/elec_permit](https://ijayklein.github.io/elec_permit)**
 
 ## ✨ Features
 
@@ -17,31 +17,35 @@ Visit the live application: **[https://yourusername.github.io/elec_permit](https
 - **📊 Interactive Diagrams**: Mermaid.js-powered workflow diagrams
 - **📋 Quick Reference Tables**: Organized code sections with visual badges
 - **🎯 Section Navigation**: Organized sidebar with categorized workflows
-- **📝 Practical Tools**: Worksheets, checklists, and permit requirements
+- **📝 Downloadable Checklists**: Fillable PDF forms for field use and plan review
+- **⚡ 2025+ Updated**: Latest CEC and NEC requirements
 
 ## 📚 Content Sections
 
 ### Main Workflows
-- **Master End-to-End Workflow** - Complete process overview
-- **Service & Panel Location** - Location requirements and dimensions
-- **Panel Quantity Decision** - When to add subpanels and feeders
-- **PV Integration** - Solar photovoltaic system connections
-- **EV Infrastructure** - Electric vehicle readiness requirements
-- **Branch Circuits** - Room-by-room circuit design
+- **Executive Summary** - Key drivers and regulatory overview
+- **End-to-End Workflow** - Complete process from design to inspection
+- **Service & Panel Location** - Location requirements, dimensions, and directories
+- **Subpanels & Feeders** - Decision criteria and design requirements
+- **PV Integration** - Solar photovoltaic system connections and rapid shutdown
+- **EV Infrastructure** - Electric vehicle readiness and EVSE requirements
+- **Room-by-Room Circuits** - Complete circuit assignment guide
 - **ESS Integration** - Energy storage system requirements
 
 ### Tools & References
-- **Subpanel Worksheet** - Feeder sizing calculations
-- **Detached Structure** - One-line diagrams and checklists
-- **Labels & Placards** - Required text and formatting
-- **Permit Set Requirements** - Complete submittal checklist
+- **Detached Structure Requirements** - Key design criteria
+- **Label Schedule** - Required label texts and formatting
+- **Code Citation Block** - Plan stamp code references
+- **Downloadable Checklists** - Fillable PDF forms package
 
 ## 🛠️ Technical Implementation
 
 - **Frontend**: Pure HTML, CSS, and JavaScript
 - **Diagrams**: Mermaid.js for interactive flowcharts
 - **Styling**: Modern CSS with gradients and responsive design
+- **Downloads**: Integrated PDF checklist package
 - **No Dependencies**: Runs entirely in the browser
+- **Standards**: 2025 CEC and 2023 NEC compliant
 
 ## 🎯 Target Audience
 
@@ -53,13 +57,15 @@ Visit the live application: **[https://yourusername.github.io/elec_permit](https
 
 ## 📖 Code References
 
-All code sections reference the California Electrical Code (CEC) and related standards:
+All code sections reference the **2025 California Electrical Code (CEC)** and related standards:
 - Article 220 (Load Calculations)
 - Article 230 (Services)
 - Article 240 (Overcurrent Protection)
 - Article 705 (Interconnected Electric Power Sources)
 - Article 690 (Solar Photovoltaic Systems)
-- CALGreen requirements
+- Article 625 (Electric Vehicle Power Transfer Systems)
+- CALGreen 4.106.4.1 (EV Infrastructure)
+- CRC R328 / CFC 1206 (Energy Storage Systems)
 - And many more...
 
 ## 🚀 Local Development
@@ -92,3 +98,9 @@ Simply open the web app and:
 ---
 
 **Made for California electrical professionals** ⚡
+
+### 📥 Additional Resources
+
+- **Fillable PDF Checklists**: Download the complete package of inspection and design checklists
+- **Code Citation Block**: Ready-to-use plan stamp references
+- **Updated for 2025**: Latest California electrical code requirements

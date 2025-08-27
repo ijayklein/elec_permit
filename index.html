@@ -331,7 +331,7 @@
             background: #5a67d8;
             transform: translateY(-2px);
         }
-    </style>
+        \n        /* Interactive Checklist Styles */\n        .checklist-form {\n            background: white;\n            border-radius: 12px;\n            padding: 30px;\n            margin: 20px 0;\n            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);\n        }\n\n        .checklist-header {\n            display: grid;\n            grid-template-columns: 1fr 1fr 1fr;\n            gap: 20px;\n            margin-bottom: 30px;\n            padding-bottom: 20px;\n            border-bottom: 2px solid #e2e8f0;\n        }\n\n        .checklist-field {\n            display: flex;\n            flex-direction: column;\n        }\n\n        .checklist-field label {\n            font-weight: 600;\n            margin-bottom: 5px;\n            color: #2d3748;\n        }\n\n        .checklist-field input {\n            padding: 8px 12px;\n            border: 1px solid #d1d5db;\n            border-radius: 6px;\n            font-size: 14px;\n        }\n\n        .checklist-field input:focus {\n            outline: none;\n            border-color: #667eea;\n            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);\n        }\n\n        .checklist-items {\n            display: grid;\n            gap: 15px;\n        }\n\n        .checklist-item {\n            display: flex;\n            align-items: center;\n            padding: 12px;\n            background: #f8f9fa;\n            border-radius: 8px;\n            transition: all 0.2s ease;\n        }\n\n        .checklist-item:hover {\n            background: #e9ecef;\n        }\n\n        .checklist-item input[type=\"checkbox\"] {\n            width: 18px;\n            height: 18px;\n            margin-right: 12px;\n            cursor: pointer;\n        }\n\n        .checklist-item label {\n            flex: 1;\n            cursor: pointer;\n            margin: 0;\n            display: flex;\n            justify-content: space-between;\n            align-items: center;\n        }\n\n        .code-ref {\n            background: #667eea;\n            color: white;\n            padding: 2px 8px;\n            border-radius: 4px;\n            font-size: 0.8rem;\n            font-weight: 500;\n        }\n\n        .calculation-helper {\n            background: linear-gradient(135deg, #e0f2fe 0%, #b3e5fc 100%);\n            border: 1px solid #29b6f6;\n            padding: 20px;\n            border-radius: 8px;\n            margin: 20px 0;\n        }\n\n        .calculation-helper h4 {\n            color: #0277bd;\n            margin-bottom: 15px;\n        }\n\n        .calc-row {\n            display: grid;\n            grid-template-columns: 200px 100px 50px;\n            gap: 10px;\n            align-items: center;\n            margin-bottom: 10px;\n        }\n\n        .calc-input {\n            padding: 8px;\n            border: 1px solid #29b6f6;\n            border-radius: 4px;\n            text-align: center;\n        }\n\n        .calc-result {\n            background: #4caf50;\n            color: white;\n            padding: 8px;\n            border-radius: 4px;\n            text-align: center;\n            font-weight: 600;\n        }\n\n        .calc-result.fail {\n            background: #f44336;\n        }\n\n        .notes-section {\n            margin-top: 30px;\n        }\n\n        .notes-section textarea {\n            width: 100%;\n            min-height: 100px;\n            padding: 12px;\n            border: 1px solid #d1d5db;\n            border-radius: 6px;\n            font-family: inherit;\n            resize: vertical;\n        }\n\n        .print-button {\n            background: #10b981;\n            color: white;\n            border: none;\n            padding: 12px 24px;\n            border-radius: 8px;\n            cursor: pointer;\n            font-size: 16px;\n            margin-top: 20px;\n            transition: all 0.2s ease;\n        }\n\n        .print-button:hover {\n            background: #059669;\n            transform: translateY(-1px);\n        }\n\n        @media (max-width: 768px) {\n            .checklist-header {\n                grid-template-columns: 1fr;\n                gap: 15px;\n            }\n            \n            .calc-row {\n                grid-template-columns: 1fr;\n                gap: 8px;\n            }\n        }\n    </style>
 </head>
 <body>
     <div class="app-container">
@@ -365,6 +365,19 @@
                 <a href="#" class="nav-item" data-section="labels">Label Schedule</a>
                 <a href="#" class="nav-item" data-section="code-citations">Code Citation Block</a>
                 <a href="#" class="nav-item" data-section="checklists">Downloadable Checklists</a>
+            </div>
+
+            <div class="nav-section">
+                <h3>Interactive Checklists</h3>
+                <a href="#" class="nav-item" data-section="service-panel-checklist">Service & Panel</a>
+                <a href="#" class="nav-item" data-section="pv-checklist">PV System</a>
+                <a href="#" class="nav-item" data-section="ev-checklist">EV Infrastructure</a>
+                <a href="#" class="nav-item" data-section="kitchen-checklist">Kitchen Island/Peninsula</a>
+                <a href="#" class="nav-item" data-section="room-checklist">Room Circuit Assignments</a>
+                <a href="#" class="nav-item" data-section="ess-checklist">Energy Storage</a>
+                <a href="#" class="nav-item" data-section="detached-checklist">Detached Structure</a>
+                <a href="#" class="nav-item" data-section="label-blocks">Label Copy Blocks</a>
+                <a href="#" class="nav-item" data-section="plan-stamp">Plan Stamp Block</a>
             </div>
         </nav>
 
@@ -833,10 +846,83 @@
                         <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">Complete package of fillable PDF checklists for field use and plan review</p>
                     </div>
                 `
+            },
+            "service-panel-checklist": {
+                title: "Service & Panel Inspection Checklist",
+                content: `
+                    <h1>Service & Panel Inspection Checklist</h1>
+                    
+                    <div class="checklist-form">
+                        <div class="checklist-header">
+                            <div class="checklist-field">
+                                <label for="project">Project:</label>
+                                <input type="text" id="project" placeholder="Enter project name">
+                            </div>
+                            <div class="checklist-field">
+                                <label for="address">Address:</label>
+                                <input type="text" id="address" placeholder="Enter project address">
+                            </div>
+                            <div class="checklist-field">
+                                <label for="date">Date:</label>
+                                <input type="date" id="date">
+                            </div>
+                        </div>
+                        
+                        <div class="checklist-items">
+                            <div class="checklist-item">
+                                <input type="checkbox" id="svc_ws">
+                                <label for="svc_ws">Working space clearance <span class="code-ref">110.26 A</span></label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="svc_des">
+                                <label for="svc_des">Dedicated equipment space <span class="code-ref">110.26 E</span></label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="svc_location">
+                                <label for="svc_location">Panel not in prohibited location <span class="code-ref">240.24 D E F</span></label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="svc_height">
+                                <label for="svc_height">Handle height and readily accessible <span class="code-ref">240.24 A</span></label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="svc_door">
+                                <label for="svc_door">Door swing and illumination <span class="code-ref">110.26</span></label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="svc_disconnect">
+                                <label for="svc_disconnect">Outdoor emergency disconnect with exact marking <span class="code-ref">230.85 E</span></label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="svc_spd">
+                                <label for="svc_spd">SPD installed at service <span class="code-ref">230.67</span></label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="svc_bonding">
+                                <label for="svc_bonding">Intersystem bonding termination <span class="code-ref">250.94</span></label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="svc_directory">
+                                <label for="svc_directory">Panel directory <span class="code-ref">408.4 A</span></label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="svc_multiple">
+                                <label for="svc_multiple">Multiple sources directory <span class="code-ref">705.10</span></label>
+                            </div>
+                        </div>
+                        
+                        <div class="notes-section">
+                            <label for="svc_notes"><strong>Notes:</strong></label>
+                            <textarea id="svc_notes" placeholder="Additional notes and observations..."></textarea>
+                        </div>
+                        
+                        <button class="print-button" onclick="window.print()">Print Checklist</button>
+                    </div>
+                `
             }
         };
 
-        // App functionality
+        // Calculation helpers\n        function calculateBusLoad() {\n            const inverterCurrent = parseFloat(document.getElementById('inverter_current')?.value) || 0;\n            const mainBreaker = parseFloat(document.getElementById('main_breaker')?.value) || 0;\n            const busRating = parseFloat(document.getElementById('bus_rating')?.value) || 0;\n            \n            const resultElement = document.getElementById('pv_calc_result');\n            if (!resultElement) return;\n            \n            if (inverterCurrent === 0 || mainBreaker === 0 || busRating === 0) {\n                resultElement.textContent = 'Enter values';\n                resultElement.className = 'calc-result';\n                return;\n            }\n            \n            const leftSide = (1.25 * inverterCurrent) + mainBreaker;\n            const rightSide = 1.20 * busRating;\n            \n            if (leftSide <= rightSide) {\n                resultElement.textContent = `PASS: ${leftSide.toFixed(1)}A ≤ ${rightSide.toFixed(1)}A`;\n                resultElement.className = 'calc-result';\n            } else {\n                resultElement.textContent = `FAIL: ${leftSide.toFixed(1)}A > ${rightSide.toFixed(1)}A`;\n                resultElement.className = 'calc-result fail';\n            }\n        }\n\n        // App functionality
         class WorkflowApp {
             constructor() {
                 this.currentSection = 'overview';
