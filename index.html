@@ -989,6 +989,446 @@
                     </div>
                 `
             },
+            "ev-infrastructure-v3": {
+                title: "4. EV Infrastructure",
+                content: `
+                    <h1>4. EV Infrastructure</h1>
+                    
+                    <h2>Design Workflow</h2>
+                    <div class="mermaid-container">
+                        <div class="mermaid">
+                            flowchart TB
+                                A[New dwelling]
+                                B[Provide EV capable per CALGreen 4.106.4.1]
+                                C[Reserve 40A 240V space and raceway]
+                                D[Mark panel directory EV capable]
+                                E{Installing EVSE now}
+                                F[Size branch 125 percent per 625.41 210.20]
+                                G[GFCI per 210.8 and AFCI per 210.12]
+                                H[Local disconnect if >60A or >150V to ground per 625.43]
+                                
+                                A --> B --> C --> D --> E
+                                E -- Yes --> F --> G --> H
+                        </div>
+                    </div>
+
+                    <div class="template-tables">
+                        <div class="table-section blank-template">
+                            <h3>Blank Template</h3>
+                            <table class="template-table">
+                                <thead>
+                                    <tr>
+                                        <th>Code</th>
+                                        <th>Requirement</th>
+                                        <th>Rationale</th>
+                                        <th>Verified</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                                    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                                    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="table-section sample-completed">
+                            <h3>Sample Completed Table</h3>
+                            <table class="template-table">
+                                <thead>
+                                    <tr>
+                                        <th>Code</th>
+                                        <th>Requirement</th>
+                                        <th>Rationale</th>
+                                        <th>Verified</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="code-column">CALGreen 4.106.4.1</td>
+                                        <td>EV capable raceway</td>
+                                        <td>State mandate</td>
+                                        <td><strong>Y</strong></td>
+                                        <td>1" EMT to garage</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="code-column">625.41</td>
+                                        <td>Circuit sized 125%</td>
+                                        <td>Prevents breaker trip</td>
+                                        <td><strong>Y</strong></td>
+                                        <td>50A breaker for 40A EVSE</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="code-column">210.8</td>
+                                        <td>GFCI</td>
+                                        <td>Shock protection</td>
+                                        <td><strong>Y</strong></td>
+                                        <td>240V receptacle protected</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `
+            },
+            "room-circuits-v3": {
+                title: "5. Room-by-Room Circuits",
+                content: `
+                    <h1>5. Room-by-Room Circuits</h1>
+                    
+                    <h2>Design Workflow</h2>
+                    <div class="mermaid-container">
+                        <div class="mermaid">
+                            flowchart TB
+                                A[Lay out receptacles per 210.52]
+                                B[Assign 20A circuits per 210.11 C]
+                                C[Apply GFCI per 210.8 A]
+                                D[Apply AFCI per 210.12 A]
+                                E[Update panel schedule per 408.4 A]
+                                
+                                A --> B --> C --> D --> E
+                        </div>
+                    </div>
+
+                    <div class="template-tables">
+                        <div class="table-section blank-template">
+                            <h3>Blank Template</h3>
+                            <table class="template-table">
+                                <thead>
+                                    <tr>
+                                        <th>Space</th>
+                                        <th>Circuit</th>
+                                        <th>Ampacity</th>
+                                        <th>AFCI</th>
+                                        <th>GFCI</th>
+                                        <th>Code</th>
+                                        <th>Rationale</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                                    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                                    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                                    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="table-section sample-completed">
+                            <h3>Sample Completed Table</h3>
+                            <table class="template-table">
+                                <thead>
+                                    <tr>
+                                        <th>Space</th>
+                                        <th>Circuit</th>
+                                        <th>Ampacity</th>
+                                        <th>AFCI</th>
+                                        <th>GFCI</th>
+                                        <th>Code</th>
+                                        <th>Rationale</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Kitchen SA1</strong></td>
+                                        <td>20A 120V</td>
+                                        <td>20A</td>
+                                        <td>Y</td>
+                                        <td>Y</td>
+                                        <td class="code-column">210.11(C)(1), 210.8</td>
+                                        <td>Required small appliance</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Bath</strong></td>
+                                        <td>20A 120V</td>
+                                        <td>20A</td>
+                                        <td>Y</td>
+                                        <td>Y</td>
+                                        <td class="code-column">210.11(C)(3)</td>
+                                        <td>Dedicated bath receptacle</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Laundry</strong></td>
+                                        <td>20A 120V</td>
+                                        <td>20A</td>
+                                        <td>Y</td>
+                                        <td>Y</td>
+                                        <td class="code-column">210.11(C)(2)</td>
+                                        <td>Laundry receptacle</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Garage</strong></td>
+                                        <td>20A 120V</td>
+                                        <td>20A</td>
+                                        <td>Y</td>
+                                        <td>Y</td>
+                                        <td class="code-column">210.11(C)(4)</td>
+                                        <td>Required garage circuit</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Bedroom</strong></td>
+                                        <td>15A/20A</td>
+                                        <td>—</td>
+                                        <td>Y</td>
+                                        <td>N</td>
+                                        <td class="code-column">210.12</td>
+                                        <td>AFCI required in bedrooms</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `
+            },
+            "ess-integration-v3": {
+                title: "6. Energy Storage Systems (ESS)",
+                content: `
+                    <h1>6. Energy Storage Systems (ESS)</h1>
+                    
+                    <h2>Design Workflow</h2>
+                    <div class="mermaid-container">
+                        <div class="mermaid">
+                            flowchart TB
+                                A[Select UL 9540 listed ESS]
+                                B[Locate per CRC R328 and CFC 1206]
+                                C[Check clearance and energy limits]
+                                D[Provide disconnect and OCPD]
+                                E[Integrate with PV per 705 and 706]
+                                F[Placards and directory per 705.10]
+                                G[Include fire sheets manuals]
+                                
+                                A --> B --> C --> D --> E --> F --> G
+                        </div>
+                    </div>
+
+                    <div class="template-tables">
+                        <div class="table-section blank-template">
+                            <h3>Blank Template</h3>
+                            <table class="template-table">
+                                <thead>
+                                    <tr>
+                                        <th>Code</th>
+                                        <th>Requirement</th>
+                                        <th>Rationale</th>
+                                        <th>Verified</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                                    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                                    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="table-section sample-completed">
+                            <h3>Sample Completed Table</h3>
+                            <table class="template-table">
+                                <thead>
+                                    <tr>
+                                        <th>Code</th>
+                                        <th>Requirement</th>
+                                        <th>Rationale</th>
+                                        <th>Verified</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="code-column">UL 9540</td>
+                                        <td>Listed ESS</td>
+                                        <td>Product safety</td>
+                                        <td><strong>Y</strong></td>
+                                        <td>Tesla Powerwall</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="code-column">CRC R328</td>
+                                        <td>Location limit</td>
+                                        <td>Fire separation</td>
+                                        <td><strong>Y</strong></td>
+                                        <td>Wall-mounted in garage</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="code-column">705.10</td>
+                                        <td>Directory</td>
+                                        <td>Multi-source marking</td>
+                                        <td><strong>Y</strong></td>
+                                        <td>Updated</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `
+            },
+            "detached-structures-v3": {
+                title: "7. Detached Structures",
+                content: `
+                    <h1>7. Detached Structures</h1>
+
+                    <div class="template-tables">
+                        <div class="table-section blank-template">
+                            <h3>Blank Template</h3>
+                            <table class="template-table">
+                                <thead>
+                                    <tr>
+                                        <th>Code</th>
+                                        <th>Requirement</th>
+                                        <th>Rationale</th>
+                                        <th>Verified</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                                    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                                    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="table-section sample-completed">
+                            <h3>Sample Completed Table</h3>
+                            <table class="template-table">
+                                <thead>
+                                    <tr>
+                                        <th>Code</th>
+                                        <th>Requirement</th>
+                                        <th>Rationale</th>
+                                        <th>Verified</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="code-column">225.31</td>
+                                        <td>Local disconnect</td>
+                                        <td>Safety</td>
+                                        <td><strong>Y</strong></td>
+                                        <td>100A MCB at shed</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="code-column">250.32</td>
+                                        <td>GES at detached</td>
+                                        <td>Grounding</td>
+                                        <td><strong>Y</strong></td>
+                                        <td>Two rods bonded</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="code-column">215.3</td>
+                                        <td>OCPD at source</td>
+                                        <td>Protection</td>
+                                        <td><strong>Y</strong></td>
+                                        <td>Feeder breaker in house</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `
+            },
+            "labels-v3": {
+                title: "8. Label Schedule",
+                content: `
+                    <h1>8. Label Schedule</h1>
+                    
+                    <table class="rules-table">
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Label Wording</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="code-column">230.85(E)</td>
+                                <td>"EMERGENCY DISCONNECT — SERVICE DISCONNECT"</td>
+                                <td>Firefighter shutoff</td>
+                            </tr>
+                            <tr>
+                                <td class="code-column">705.10</td>
+                                <td>"CAUTION — MULTIPLE SOURCES OF POWER"</td>
+                                <td>Alert personnel</td>
+                            </tr>
+                            <tr>
+                                <td class="code-column">690.54</td>
+                                <td>"PHOTOVOLTAIC SYSTEM AC POINT OF CONNECTION"</td>
+                                <td>Identify PV tie-in</td>
+                            </tr>
+                            <tr>
+                                <td class="code-column">690.56(C)</td>
+                                <td>"PV SYSTEM EQUIPPED WITH RAPID SHUTDOWN — OPERATE RAPID SHUTDOWN SWITCH TO OFF"</td>
+                                <td>Firefighter safety</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                `
+            },
+            "code-citations-v3": {
+                title: "9. Plan Stamp Code Citation Block",
+                content: `
+                    <h1>9. Plan Stamp Code Citation Block</h1>
+                    
+                    <table class="rules-table">
+                        <thead>
+                            <tr>
+                                <th>Citation</th>
+                                <th>Scope</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="code-column">110.26</td>
+                                <td>Working space, illumination</td>
+                            </tr>
+                            <tr>
+                                <td class="code-column">240.24</td>
+                                <td>Panel location & handle height</td>
+                            </tr>
+                            <tr>
+                                <td class="code-column">230.85</td>
+                                <td>Emergency disconnect</td>
+                            </tr>
+                            <tr>
+                                <td class="code-column">230.67</td>
+                                <td>Surge protection device</td>
+                            </tr>
+                            <tr>
+                                <td class="code-column">250.94</td>
+                                <td>Intersystem bonding termination</td>
+                            </tr>
+                            <tr>
+                                <td class="code-column">408.4</td>
+                                <td>Panel directories</td>
+                            </tr>
+                            <tr>
+                                <td class="code-column">705.10/11/12</td>
+                                <td>PV interconnections</td>
+                            </tr>
+                            <tr>
+                                <td class="code-column">690.12/54/56(C)</td>
+                                <td>PV shutdown & labels</td>
+                            </tr>
+                            <tr>
+                                <td class="code-column">CALGreen 4.106.4.1</td>
+                                <td>EV-capable mandate</td>
+                            </tr>
+                            <tr>
+                                <td class="code-column">CRC R328</td>
+                                <td>ESS siting</td>
+                            </tr>
+                            <tr>
+                                <td class="code-column">CFC 1206</td>
+                                <td>ESS fire provisions</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                `
+            },
             "service-panel-checklist": {
                 title: "Service & Panel Inspection Checklist",
                 content: `
@@ -1061,10 +1501,95 @@
                         <button class="print-button" onclick="window.print()">Print Checklist</button>
                     </div>
                 `
+            },
+            "pv-checklist": {
+                title: "PV System Inspection Checklist",
+                content: `
+                    <h1>PV System Inspection Checklist</h1>
+                    
+                    <div class="checklist-form">
+                        <div class="checklist-header">
+                            <div class="checklist-field">
+                                <label for="pv_project">Project:</label>
+                                <input type="text" id="pv_project" placeholder="Enter project name">
+                            </div>
+                            <div class="checklist-field">
+                                <label for="pv_address">Address:</label>
+                                <input type="text" id="pv_address" placeholder="Enter project address">
+                            </div>
+                            <div class="checklist-field">
+                                <label for="pv_date">Date:</label>
+                                <input type="date" id="pv_date">
+                            </div>
+                        </div>
+                        
+                        <div class="checklist-items">
+                            <div class="checklist-item">
+                                <input type="checkbox" id="pv_interconnection">
+                                <label for="pv_interconnection">Interconnection method documented <span class="code-ref">705.11 or 705.12</span></label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="pv_bus_calc">
+                                <label for="pv_bus_calc">Load side bus calculation passes <span class="code-ref">705.12</span></label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="pv_supply_disconnect">
+                                <label for="pv_supply_disconnect">Supply side disconnect and OCPD location <span class="code-ref">705.11</span></label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="pv_rapid_shutdown">
+                                <label for="pv_rapid_shutdown">Rapid shutdown equipment and initiator <span class="code-ref">690.12</span></label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="pv_ac_label">
+                                <label for="pv_ac_label">PV AC output label <span class="code-ref">690.54</span></label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="pv_rsd_label">
+                                <label for="pv_rsd_label">Rapid shutdown label <span class="code-ref">690.56 C</span></label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="pv_directory">
+                                <label for="pv_directory">Multiple sources directory updated <span class="code-ref">705.10</span></label>
+                            </div>
+                        </div>
+                        
+                        <div class="calculation-helper">
+                            <h4>Bus Calculation Helper</h4>
+                            <div class="calc-row">
+                                <label>Inverter AC current nameplate:</label>
+                                <input type="number" class="calc-input" id="inverter_current" placeholder="A" oninput="calculateBusLoad()">
+                                <span>A</span>
+                            </div>
+                            <div class="calc-row">
+                                <label>Main breaker rating:</label>
+                                <input type="number" class="calc-input" id="main_breaker" placeholder="A" oninput="calculateBusLoad()">
+                                <span>A</span>
+                            </div>
+                            <div class="calc-row">
+                                <label>Bus rating:</label>
+                                <input type="number" class="calc-input" id="bus_rating" placeholder="A" oninput="calculateBusLoad()">
+                                <span>A</span>
+                            </div>
+                            <div class="calc-row">
+                                <label>Check: 1.25 x inverter + main ≤ 1.20 x bus</label>
+                                <div class="calc-result" id="pv_calc_result">Enter values</div>
+                                <span></span>
+                            </div>
+                        </div>
+                        
+                        <div class="notes-section">
+                            <label for="pv_notes"><strong>Notes:</strong></label>
+                            <textarea id="pv_notes" placeholder="Additional notes and observations..."></textarea>
+                        </div>
+                        
+                        <button class="print-button" onclick="window.print()">Print Checklist</button>
+                    </div>
+                `
             }
         };
 
-        // Calculation helpers\n        function calculateBusLoad() {\n            const inverterCurrent = parseFloat(document.getElementById('inverter_current')?.value) || 0;\n            const mainBreaker = parseFloat(document.getElementById('main_breaker')?.value) || 0;\n            const busRating = parseFloat(document.getElementById('bus_rating')?.value) || 0;\n            \n            const resultElement = document.getElementById('pv_calc_result');\n            if (!resultElement) return;\n            \n            if (inverterCurrent === 0 || mainBreaker === 0 || busRating === 0) {\n                resultElement.textContent = 'Enter values';\n                resultElement.className = 'calc-result';\n                return;\n            }\n            \n            const leftSide = (1.25 * inverterCurrent) + mainBreaker;\n            const rightSide = 1.20 * busRating;\n            \n            if (leftSide <= rightSide) {\n                resultElement.textContent = `PASS: ${leftSide.toFixed(1)}A ≤ ${rightSide.toFixed(1)}A`;\n                resultElement.className = 'calc-result';\n            } else {\n                resultElement.textContent = `FAIL: ${leftSide.toFixed(1)}A > ${rightSide.toFixed(1)}A`;\n                resultElement.className = 'calc-result fail';\n            }\n        }\n\n        // App functionality
+        // Calculation helpers\n        function calculateBusLoad() {\n            const inverterCurrent = parseFloat(document.getElementById('inverter_current')?.value) || 0;\n            const mainBreaker = parseFloat(document.getElementById('main_breaker')?.value) || 0;\n            const busRating = parseFloat(document.getElementById('bus_rating')?.value) || 0;\n            \n            const resultElement = document.getElementById('pv_calc_result');\n            if (!resultElement) return;\n            \n            if (inverterCurrent === 0 || mainBreaker === 0 || busRating === 0) {\n                resultElement.textContent = 'Enter values';\n                resultElement.className = 'calc-result';\n                return;\n            }\n            \n            const leftSide = (1.25 * inverterCurrent) + mainBreaker;\n            const rightSide = 1.20 * busRating;\n            \n            if (leftSide <= rightSide) {\n                resultElement.textContent = `PASS: ${leftSide.toFixed(1)}A ≤ ${rightSide.toFixed(1)}A`;\n                resultElement.className = 'calc-result';\n            } else {\n                resultElement.textContent = `FAIL: ${leftSide.toFixed(1)}A > ${rightSide.toFixed(1)}A`;\n                resultElement.className = 'calc-result fail';\n            }\n        }\n\n        function calculateEVLoad() {\n            const evseCurrent = parseFloat(document.getElementById('evse_current')?.value) || 0;\n            const resultElement = document.getElementById('ev_calc_result');\n            if (!resultElement) return;\n            \n            if (evseCurrent === 0) {\n                resultElement.textContent = 'Enter value';\n                resultElement.className = 'calc-result';\n                return;\n            }\n            \n            const ocpdMin = 1.25 * evseCurrent;\n            resultElement.textContent = `${ocpdMin.toFixed(1)}`;\n            resultElement.className = 'calc-result';\n        }\n\n        // App functionality
         class WorkflowApp {
             constructor() {
                 this.currentSection = 'overview';
