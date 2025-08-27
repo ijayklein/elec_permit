@@ -144,6 +144,18 @@
             font-size: 1.5rem;
             cursor: pointer;
             color: #667eea;
+            padding: 8px;
+            min-width: 44px;
+            min-height: 44px;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        
+        .menu-toggle:active {
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 4px;
         }
 
         .content-section {
@@ -288,6 +300,10 @@
 
             .menu-toggle {
                 display: block;
+                font-size: 1.8rem;
+                padding: 10px;
+                min-width: 48px;
+                min-height: 48px;
             }
 
             .content-section {
@@ -2509,11 +2525,33 @@ PHOTOVOLTAIC SYSTEM<br/>AC POINT OF CONNECTION
                         const section = item.dataset.section;
                         this.loadSection(section);
                         this.setActiveNav(item);
+                        
+                        // Close sidebar on mobile after selecting a section
+                        if (window.innerWidth <= 768) {
+                            this.closeSidebar();
+                        }
                     });
                 });
 
-                // Mobile menu toggle
-                document.getElementById('menuToggle').addEventListener('click', () => {
+                // Mobile menu toggle - support both click and touch events
+                const menuToggle = document.getElementById('menuToggle');
+                
+                // Add click event
+                menuToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.toggleSidebar();
+                });
+                
+                // Add touch events for better mobile support
+                menuToggle.addEventListener('touchstart', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+                
+                menuToggle.addEventListener('touchend', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
                     this.toggleSidebar();
                 });
 
@@ -2553,18 +2591,28 @@ PHOTOVOLTAIC SYSTEM<br/>AC POINT OF CONNECTION
                 const sidebar = document.getElementById('sidebar');
                 const mainContent = document.getElementById('mainContent');
                 
-                sidebar.classList.toggle('show');
-                sidebar.classList.toggle('collapsed');
-                mainContent.classList.toggle('expanded');
+                // On mobile, use 'show' class to slide in sidebar
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.toggle('show');
+                } else {
+                    // On desktop, toggle collapsed state
+                    sidebar.classList.toggle('collapsed');
+                    mainContent.classList.toggle('expanded');
+                }
             }
 
             closeSidebar() {
                 const sidebar = document.getElementById('sidebar');
                 const mainContent = document.getElementById('mainContent');
                 
-                sidebar.classList.remove('show');
-                sidebar.classList.add('collapsed');
-                mainContent.classList.add('expanded');
+                // On mobile, remove 'show' class to hide sidebar
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.remove('show');
+                } else {
+                    // On desktop, add collapsed state
+                    sidebar.classList.add('collapsed');
+                    mainContent.classList.add('expanded');
+                }
             }
 
             setupSearch() {
